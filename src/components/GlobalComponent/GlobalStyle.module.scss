@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;700&display=swap");
+
+$font-family: "Roboto";
+$text-color: #000;
+$text-smoke-color: rgba(255, 255, 255, 0.7);
+$primary-color: #fac564;
+$black-color: #121618;
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    //100% = 16px
+    //Quy doi ve 10px de su dung: 100% / 16px * 10
+    font-size: 62.5%;
+}
+body {
+    font-family: $font-family, sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.8;
+    overflow-y: overlay;
+}

@@ -1,0 +1,276 @@
+@import "../../../components/GlobalComponent/GlobalStyle.module.scss";
+@import "../../../scss/mixin";
+
+$search-height: 30px;
+$nav-height: 89px;
+
+#overlay {
+    position: fixed; /* Sit on top of the page content */
+    display: block; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+}
+
+nav {
+    background: $black-color;
+    height: $nav-height;
+    .navbar-container {
+        width: 100%;
+        height: $nav-height;
+        position: relative;
+        display: flex;
+        max-width: 1140px;
+        .navbar-brand {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            order: 1;
+            font-family: "Josefin Sans", Arial, sans-serif;
+            color: #fff;
+            font-size: 2.4rem;
+            vertical-align: bottom;
+            line-height: 1.5;
+            padding-left: 20px;
+            height: $nav-height;
+
+            small {
+                color: $primary-color;
+                text-transform: uppercase;
+                font-size: 1.1rem;
+                text-align: center;
+                letter-spacing: 4px;
+                margin: 0;
+                width: fit-content;
+            }
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .brand-image {
+            width: 30px;
+            margin-right: 4px;
+            height: auto;
+
+            @include media-breakpoint-md() {
+                width: 5vw;
+            }
+        }
+
+        //Nav
+        .navbar-nav {
+            order: 2;
+            @include media-breakpoint-lg() {
+                order: 3;
+            }
+        }
+
+        .nav-list {
+            display: flex;
+            align-items: center;
+            @include media-breakpoint-lg() {
+                flex-direction: column;
+            }
+        }
+
+        .link {
+            display: inline-block;
+            text-decoration: none;
+            color: $text-smoke-color;
+            transition: 0.3s color ease;
+            padding: 24px 20px;
+            font-size: 1.5rem;
+            -webkit-transition: 0.3s color ease;
+
+            &:hover {
+                color: $primary-color;
+                .nav-icon {
+                    color: $primary-color;
+                }
+            }
+            @include media-breakpoint-lg() {
+                height: 55px;
+                padding: 15px 20px;
+            }
+        }
+
+        //Search
+        .navbar-search {
+            padding-right: 15px;
+            order: 3;
+            @include media-breakpoint-lg() {
+                order: 2;
+                height: 100%;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+            }
+        }
+        .search {
+            font-size: 2rem;
+            margin: 0 6px;
+        }
+
+        .nav-search-desktop {
+            display: flex;
+            align-items: center;
+
+            @include media-breakpoint-lg() {
+                display: none;
+            }
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 4px;
+            overflow: hidden;
+            height: $search-height;
+
+            input {
+                border: none;
+                outline: none;
+                padding: 0 10px 0 0;
+                font-weight: 300;
+                flex: 1;
+            }
+
+            @include media-breakpoint-lg() {
+                padding: 0 15px 0 0;
+                display: none;
+            }
+        }
+
+        .nav-icon {
+            width: 2.4rem;
+            color: $text-smoke-color;
+        }
+
+        //Mobile {
+        .nav-search-mobile {
+            display: none;
+            @include media-breakpoint-lg() {
+                display: block;
+            }
+        }
+
+        .search-mobile_container {
+            display: flex;
+            right: 0;
+            margin-bottom: 0;
+            li {
+                list-style: none;
+                border: 1px solid $primary-color;
+                border-radius: 10px;
+                opacity: 0.6;
+                height: 36px;
+                width: 36px;
+                text-align: center;
+            }
+        }
+        //Menu
+        @mixin menu-line {
+            height: 3px;
+            width: 24px;
+            background-color: $text-smoke-color;
+            border-radius: 4px;
+        }
+
+        //Menu
+        .menu {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 30px;
+        }
+
+        .menu-line {
+            $space: 4px;
+            position: relative;
+            display: none;
+            text-align: center;
+            margin-top: -2px;
+
+            &::before {
+                position: absolute;
+                content: "";
+                top: -$space;
+                @include menu-line;
+                left: 50%;
+                transform: translateX(-50%);
+                transition: all 0.3s ease;
+            }
+
+            &::after {
+                position: absolute;
+                content: "";
+                top: $space;
+                left: 50%;
+                transform: translateX(-50%);
+                @include menu-line;
+                transition: all 0.3s ease;
+            }
+
+            @include media-breakpoint-lg() {
+                display: block;
+            }
+        }
+
+        .line-active {
+            &::before {
+                position: absolute;
+                content: "";
+                transform: translate(-11px, 4px) rotateZ(45deg);
+            }
+
+            &::after {
+                position: absolute;
+                content: "";
+                transform: translate(-11px, -4px) rotateZ(-45deg);
+            }
+        }
+
+        .nav-item {
+            list-style: none;
+            @include media-breakpoint-lg() {
+                margin: 0 5px;
+            }
+        }
+
+        .icon-mb {
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .navbar-menu {
+            @include media-breakpoint-lg() {
+                transition: all 0.6s ease;
+                -webkit-transition: all 0.6s ease;
+                width: 300px;
+                height: 88vh;
+                transform: translateX(-300px);
+                background-color: $black-color;
+                visibility: hidden;
+                opacity: 0;
+                z-index: 100;
+            }
+        }
+
+        .navbar-menu-open {
+            @include media-breakpoint-lg() {
+                transform: translateX(0px);
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+    }
+}
