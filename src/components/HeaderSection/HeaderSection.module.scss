@@ -1,0 +1,78 @@
+@import "../../components/GlobalComponent/GlobalStyle.module.scss";
+@import "../../scss/mixin";
+
+@mixin dotGeneral {
+    display: inline-block;
+    background-color: $primary-color;
+    transform: rotate(45deg);
+}
+
+@mixin dotSmall {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    bottom: 4px;
+    left: 100px;
+    right: 0;
+    content: "";
+    width: 40px;
+    height: 1px;
+    background: $primary-color;
+    margin: 0 auto;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0px;
+
+    .wrapper-header-section {
+        text-align: center;
+
+        h1 {
+            @include header-text;
+            text-transform: uppercase;
+        }
+
+        p {
+            @include content-text;
+        }
+
+        .line {
+            position: relative;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            margin: 0;
+
+            &::before {
+                @include dotSmall;
+            }
+
+            &::after {
+                @include dotSmall;
+                right: 100px;
+                left: 0;
+            }
+
+            .dots {
+                @include dotGeneral;
+                height: 10px;
+                width: 10px;
+                position: relative;
+                margin: 0px 4px;
+            }
+
+            .dot-small {
+                height: 8px;
+                width: 8px;
+            }
+        }
+    }
+
+    .menu-product {
+    }
+}

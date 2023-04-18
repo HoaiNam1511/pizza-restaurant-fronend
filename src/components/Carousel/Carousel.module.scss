@@ -1,0 +1,229 @@
+@import "../../components/GlobalComponent/GlobalStyle.module.scss";
+@import "../../scss/mixin";
+
+.carousel {
+    .carousel-container {
+        background-image: url("../../assets/images/bg_1.jpg");
+        position: relative;
+        height: 750px;
+        z-index: 0;
+    }
+
+    .slide-container {
+        overflow: hidden;
+        width: 100vw;
+    }
+
+    .slide {
+        display: flex;
+        width: 12400px;
+        white-space: nowrap;
+    }
+
+    .slide-item {
+        position: relative;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        height: 750px;
+        z-index: 0;
+        opacity: 1;
+        visibility: visible;
+        width: 100vw;
+    }
+
+    .slide-background {
+        background-image: url("../../assets/images/bg_3.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        height: 750px;
+        position: relative;
+        z-index: 0;
+    }
+
+    .active {
+    }
+
+    .fadeIn {
+        animation: fadeIn ease;
+        -webkit-animation-duration: 2s;
+        animation-duration: 2s;
+    }
+
+    // .fadeOut {
+    //     animation: fadeIn 2s ease;
+    // }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #000;
+        opacity: 0.5;
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        max-width: 1140px;
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+        height: 100%;
+        .item {
+            display: flex;
+            align-items: center;
+
+            .item-1 {
+                padding: 0 15px;
+                white-space: pre-wrap;
+                img {
+                    display: block;
+                    width: 100%;
+
+                    @include media-breakpoint-md() {
+                        margin-top: 20px;
+                    }
+                }
+
+                @include media-breakpoint-md() {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .subheading {
+                    font-family: "Nothing You Could Do", cursive;
+                    font-size: 3rem;
+                    color: $primary-color;
+                }
+
+                .name {
+                    text-transform: uppercase;
+                    font-size: 4rem;
+                    color: #ffffff;
+                    line-height: 1.5;
+                    font-weight: normal;
+                    letter-spacing: 1px;
+                    margin-bottom: 24px;
+                }
+
+                .slogan {
+                    font-size: 1.8rem;
+                    line-height: 1.5;
+                    font-weight: 300;
+                    color: #cecac9;
+                    margin-bottom: 48px;
+                }
+
+                .subheading,
+                .name,
+                .slogan {
+                    @include media-breakpoint-md() {
+                        text-align: center;
+                    }
+                }
+
+                .carousel-btn + .carousel-btn {
+                    margin-left: 5px;
+                }
+            }
+
+            .content-left {
+                .subheading,
+                .name,
+                .slogan {
+                    text-align: end;
+                    @include media-breakpoint-md() {
+                        text-align: center;
+                    }
+                }
+
+                .carousel-btn_container {
+                    text-align: end;
+                    @include media-breakpoint-md() {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+
+    .dots {
+        position: absolute;
+        width: 100%;
+        bottom: 40px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .dot {
+        position: relative;
+        height: 21px;
+        width: 21px;
+        border: 2px solid #cecac9;
+        margin: 0 10px;
+        border-radius: 50%;
+        background-color: transparent;
+
+        &::after {
+            position: absolute;
+            content: "";
+            background-color: #cecac9;
+            height: 12px;
+            width: 12px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+        }
+    }
+
+    .dot-active {
+        border: 2px solid #fff;
+        &::after {
+            background-color: #fff;
+        }
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+        -ms-transform: scale(0.95);
+        -webkit-transform: scale(0.95);
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        visibility: visible;
+        -ms-transform: scale(1);
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeOut {
+    100% {
+        opacity: 1;
+        visibility: visible;
+        -ms-transform: scale(1);
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    0% {
+        opacity: 0;
+        visibility: hidden;
+        -ms-transform: scale(0.95);
+        -webkit-transform: scale(0.95);
+        transform: scale(0.95);
+    }
+}

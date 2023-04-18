@@ -3,9 +3,7 @@ import styles from "./Footer.module.scss";
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import InstagramIcon from "@mui/icons-material/Instagram";
+import { socialData } from "../../../data/index";
 
 const cx = classNames.bind(styles);
 
@@ -31,27 +29,15 @@ function Footer({ className }: Footer) {
                             with love and only the finest ingredients
                         </p>
                         <ul className={cx("social-list")}>
-                            <li>
-                                <a href="">
-                                    <TwitterIcon
-                                        className={cx("social-icon")}
-                                    ></TwitterIcon>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <FacebookIcon
-                                        className={cx("social-icon")}
-                                    ></FacebookIcon>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <InstagramIcon
-                                        className={cx("social-icon")}
-                                    ></InstagramIcon>
-                                </a>
-                            </li>
+                            {socialData.map((social, index) => (
+                                <li key={index}>
+                                    <a href={social.link}>
+                                        <social.icon
+                                            className={cx("social-icon")}
+                                        />
+                                    </a>
+                                </li>
+                            ))}
                         </ul>
                     </div>
 
@@ -136,7 +122,7 @@ function Footer({ className }: Footer) {
                         <div className={cx("item-flex")}>
                             <EmailIcon className={cx("footer-icon")} />
                             <span className={cx("text", "text-light")}>
-                                info@yourdomain.com
+                                pizzarestaurant@pzr.com
                             </span>
                         </div>
                         <div className={cx("item-flex")}>

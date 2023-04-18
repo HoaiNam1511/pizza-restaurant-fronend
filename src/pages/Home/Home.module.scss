@@ -1,0 +1,129 @@
+@import "../../scss/mixin";
+@import "../../components/GlobalComponent/GlobalStyle.module.scss";
+
+.wrapper {
+    background: url("../../assets/images/bg_4.jpg") no-repeat fixed;
+    background-size: cover;
+    .info-social {
+        .info {
+            padding: 30px 0px 30px 210px;
+            background-color: $black-color;
+
+            @include media-breakpoint-xl() {
+                padding: 15px 10px;
+            }
+        }
+
+        .info-block {
+            display: flex;
+
+            .block-1 {
+                width: 40px;
+
+                .info-icon {
+                    color: $primary-color;
+                    font-size: 2rem;
+                }
+            }
+
+            h3 {
+                font-size: 1.6rem;
+                color: $text-light-color;
+            }
+
+            p {
+                font-weight: 300;
+                color: $text-smoke-color;
+                font-size: 1.5rem;
+            }
+        }
+
+        .social {
+            background-color: $primary-color;
+            padding: 30px 30px 30px 20px;
+
+            @include media-breakpoint-lg() {
+                padding: 24px 10px 24px 10px;
+            }
+
+            @include media-breakpoint-md() {
+                padding: 15px 10px 15px 10px;
+            }
+
+            .social-list {
+                list-style: none;
+                display: flex;
+                align-items: center;
+                margin-bottom: 0;
+                li {
+                    a {
+                        height: 50px;
+                        width: 50px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        float: left;
+                        background: rgba(255, 255, 255, 0.05);
+                        border-radius: 50%;
+                        position: relative;
+                        margin: 0 10px;
+
+                        .social-icon {
+                            color: $text-smoke-color;
+                            font-size: 3rem;
+                            transition: color 0.2s ease;
+                            &:hover {
+                                color: $text-light-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .about {
+        .image {
+            background: url("../../assets/images/about.jpg");
+            padding: 5%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+
+            @include media-breakpoint-md() {
+                height: 300px;
+            }
+        }
+
+        .content {
+            padding: 5%;
+
+            @include media-breakpoint-md() {
+                padding: 30px 15px;
+            }
+
+            .header {
+                vertical-align: bottom;
+                color: $text-light-color;
+                font-size: 3rem;
+                text-transform: uppercase;
+                margin-bottom: 24px;
+                font-family: "Josefin Sans", Arial, sans-serif;
+                span {
+                    color: $primary-color;
+                }
+                .pizza-icon {
+                    margin-top: -8px;
+                    width: 2.8rem;
+                }
+            }
+
+            p {
+                color: $text-smoke-color;
+                font-size: 1.6rem;
+                font-weight: 300;
+                font-family: "Poppins", Arial, sans-serif;
+            }
+        }
+    }
+}

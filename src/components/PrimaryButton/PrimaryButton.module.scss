@@ -1,0 +1,45 @@
+@import "../../components/GlobalComponent/GlobalStyle.module.scss";
+@import "../../scss/mixin";
+
+.wrapper-btn {
+    display: inline-block;
+    height: 53px;
+    width: 118px;
+    .btn-primary {
+        height: 100%;
+        width: 100%;
+        display: inline-block;
+        border-radius: 0;
+        border: 1px solid $primary-color;
+        color: #000;
+        font-size: 1.4rem;
+        display: inline-block;
+        font-weight: 400;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        border-radius: 2px;
+    }
+
+    .primary {
+        background-color: $primary-color;
+        &:hover {
+            background-color: transparent;
+            border: 1px solid $primary-color;
+            color: $primary-color;
+        }
+    }
+
+    .outline {
+        background-color: transparent;
+    }
+
+    .white {
+        color: #fff;
+        border: 1px solid #fff;
+        &:hover {
+            color: #000;
+            background-color: $primary-color;
+        }
+    }
+}

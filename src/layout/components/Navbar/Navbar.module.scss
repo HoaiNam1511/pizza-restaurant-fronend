@@ -95,6 +95,11 @@ nav {
                     color: $primary-color;
                 }
             }
+
+            .nav-icon {
+                margin-right: 10px;
+            }
+
             @include media-breakpoint-lg() {
                 height: 55px;
                 padding: 15px 20px;
@@ -243,6 +248,10 @@ nav {
             @include media-breakpoint-lg() {
                 margin: 0 5px;
             }
+        }
+
+        .active {
+            color: $primary-color;
         }
 
         .icon-mb {

@@ -26,7 +26,9 @@ function Nav({ className }: Nav) {
                             key={index}
                         >
                             <NavLink
-                                className={cx("link")}
+                                className={(nav) =>
+                                    cx("link", { active: nav.isActive })
+                                }
                                 to={item.to}
                             >
                                 {item.title}
