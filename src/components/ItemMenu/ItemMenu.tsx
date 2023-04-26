@@ -5,13 +5,15 @@ const cx = classNames.bind(styles);
 
 interface ItemMenu {
     light?: boolean;
+    title: string;
+    value: number | string;
 }
 
-function ItemMenu({ light }: ItemMenu) {
+function ItemMenu({ light, title, value }: ItemMenu) {
     return (
         <div className={cx("item-menu-wrapper", light ? "light" : "dark")}>
-            <span>Calories</span>
-            <span>800 kcal</span>
+            <span>{title}</span>
+            <span>{value}</span>
         </div>
     );
 }

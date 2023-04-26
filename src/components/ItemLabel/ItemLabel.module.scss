@@ -1,0 +1,28 @@
+@import "../../scss/mixin";
+@import "../../components/GlobalComponent/GlobalStyle.module.scss";
+
+.block {
+    margin: 10px 0px;
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+.title-header {
+    font-size: 1.7rem;
+    color: #b7903c;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    @include media-breakpoint-sm() {
+        font-size: 1.5rem;
+    }
+}
+
+.title {
+    color: #fff;
+    font-weight: 400;
+    font-size: 1.6rem;
+    margin-bottom: 22px;
+    @include media-breakpoint-sm() {
+        font-size: 1.4rem;
+    }
+}

@@ -12,8 +12,17 @@ export interface Product {
     id: number;
     name: string;
     price: number;
-    material: string;
-    description: string;
+    material?: string;
+    description?: string;
     image: string;
-    category: Category[];
+    category?: Category[];
+}
+export interface Select {
+    title: string;
+    value: string | number;
+}
+
+export interface ProductCart extends Product {
+    quantity: number;
+    size: string;
 }

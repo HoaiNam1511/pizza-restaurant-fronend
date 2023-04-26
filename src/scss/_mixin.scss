@@ -41,3 +41,21 @@
     font-weight: 300;
     font-family: "Poppins", Arial, sans-serif;
 }
+
+@mixin dash-line {
+    position: absolute;
+    bottom: 30%;
+    left: 0;
+    right: 0;
+    content: "";
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #bf7e06;
+    z-index: 1;
+}
+
+@mixin line-white-solid {
+    border-bottom: $text-light-color 2px solid;
+    height: 1px;
+    margin: 40px 0px;
+}

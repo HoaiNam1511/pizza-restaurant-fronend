@@ -10,13 +10,20 @@
         font-size: 1.6rem;
         padding: 0 15px;
         z-index: 2;
-        text-transform: capitalize;
         &:nth-child(1) {
             color: $text-light-color;
         }
         &:nth-child(2) {
             color: $primary-color;
         }
+
+        @include media-breakpoint-sm() {
+            font-size: 1.4rem;
+        }
+    }
+
+    span::first-letter {
+        text-transform: capitalize;
     }
 
     &::before {

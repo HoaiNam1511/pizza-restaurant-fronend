@@ -28,3 +28,40 @@ body {
     line-height: 1.8;
     overflow-y: overlay;
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #b3b3b3;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #828282;
+}
+
+//Table
+table {
+    thead {
+        border-bottom: 1px solid $primary-color;
+    }
+
+    tr {
+        th,
+        td {
+            font-size: 1.6rem;
+            color: aliceblue;
+        }
+        td {
+            border-bottom: 1px solid $primary-color;
+        }
+    }
+}

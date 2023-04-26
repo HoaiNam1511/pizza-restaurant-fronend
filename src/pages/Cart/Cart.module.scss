@@ -1,0 +1,67 @@
+@import "../../scss/mixin";
+@import "../../components/GlobalComponent/GlobalStyle.module.scss";
+
+$td-height: 100px;
+
+.wrapper {
+    background: url("../../assets/images/bg_4.jpg") no-repeat fixed;
+    background-size: cover;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .table {
+        width: 100%;
+        max-width: 1200px;
+        background-color: transparent;
+        margin-top: 50px;
+        thead {
+            height: 50px;
+            padding: 0 30px;
+            tr {
+                height: 50px;
+            }
+        }
+
+        tr {
+            height: $td-height;
+            th,
+            td {
+                text-align: center;
+            }
+            td {
+                display: flex;
+                align-items: center;
+                img {
+                    object-fit: cover;
+                    width: $td-height - 30px;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                span {
+                    padding-left: 10px;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+            td:not(:first-child) {
+                justify-content: center;
+            }
+        }
+
+        .btn-remove {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            svg {
+                font-size: 3rem;
+                color: aliceblue;
+            }
+        }
+    }
+}

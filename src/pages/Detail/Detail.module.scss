@@ -1,40 +1,194 @@
 @import "../../scss/mixin";
 @import "../../components/GlobalComponent/GlobalStyle.module.scss";
 
+@mixin title-header {
+    font-size: 1.7rem;
+    color: #b7903c;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+@mixin title {
+    color: #fff;
+    font-weight: 400;
+    font-size: 1.6rem;
+    margin-bottom: 22px;
+}
+
 .background {
+    padding: 50px 0px;
     background: url("../../assets/images/bg_4.jpg") no-repeat fixed;
     background-size: cover;
+
+    @include media-breakpoint-md() {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }
 
 .wrapper {
     .left {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         img {
-            width: 100%;
+            width: 65%;
         }
     }
+
     .right {
-        max-width: 440px;
+        // max-width: 440px;
         padding-left: 40px;
+
+        @include media-breakpoint-lg() {
+            padding-left: 0px;
+            max-width: 100%;
+            margin-top: 40px;
+        }
         .name {
             color: #fff;
             font-size: 3rem;
             text-transform: uppercase;
             font-weight: 500;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+
+            @include media-breakpoint-sm() {
+                font-size: 5.4vw;
+            }
         }
         .price {
             color: $text-price-color;
             font-size: 2.4rem;
+            margin-bottom: 8px;
+            @include media-breakpoint-sm() {
+                font-size: 4.6vw;
+            }
         }
+
         .title {
-            color: #fff;
-            font-weight: 400;
+            @include title;
+            @include media-breakpoint-sm() {
+                font-size: 1.4rem;
+            }
+        }
+
+        .block {
+            margin: 10px 0px;
+            max-height: 120px;
+            overflow-y: auto;
+        }
+
+        .title-header {
+            @include title-header;
+            @include media-breakpoint-sm() {
+                font-size: 1.5rem;
+            }
+        }
+
+        .block-container,
+        .block-container-1 {
+            margin-top: 30px;
+        }
+
+        .btn-order {
+            margin-top: 10px;
+        }
+
+        .block-container-1 {
+            margin: 0 -5px;
+        }
+
+        .block-1 {
+            padding: 0 5px;
+        }
+
+        .select-quantity,
+        .dropdown-size,
+        .btn-order {
+            height: 42px;
+            width: 100%;
             font-size: 1.6rem;
         }
-        .title-header {
-            font-size: 1.7rem;
-            color: #b7903c;
-            text-transform: uppercase;
+    }
+
+    .information {
+        .information-header {
+            position: relative;
+            font-size: 1.8rem;
+            &::before {
+                @include dash-line;
+                bottom: 0%;
+            }
+        }
+
+        padding: 30px 0px;
+        ul {
+            position: relative;
+            list-style: none;
+            margin-bottom: 0px;
+            li {
+                @include title-header;
+                position: relative;
+                display: inline-block;
+                text-align: center;
+                padding: 5px 30px;
+                margin: 0;
+                font-size: 1.7rem;
+                &:nth-child(1) {
+                    padding-left: 0;
+                }
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            .tab-active {
+                &::before {
+                    position: absolute;
+                    content: "";
+                    bottom: 0;
+                    height: 2px;
+                    left: 0;
+                    right: 0;
+                    background-color: $text-price-color;
+                }
+            }
+
+            &::before {
+                @include dash-line;
+                bottom: 0%;
+            }
+        }
+
+        .content-wrapper {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .content-wrapper-active {
+            display: none;
+        }
+
+        .content {
+            padding: 15px 0px;
+            @include title;
+
+            &-active {
+            }
+        }
+    }
+
+    .list-header {
+        font-size: 2.6rem;
+        color: #b7903c;
+        text-transform: uppercase;
+        margin-bottom: 30px;
+
+        @include media-breakpoint-sm() {
+            font-size: 6vw;
         }
     }
 }

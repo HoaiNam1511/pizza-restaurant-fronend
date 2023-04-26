@@ -34,7 +34,7 @@ export const SearchIcon = ({
 }) => (
     <svg
         id="Capa_1"
-        enable-background="new 0 0 461.516 461.516"
+        enableBackground="new 0 0 461.516 461.516"
         // height="512"
         viewBox="0 0 461.516 461.516"
         // width="512"

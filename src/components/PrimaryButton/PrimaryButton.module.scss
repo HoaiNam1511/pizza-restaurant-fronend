@@ -5,6 +5,7 @@
     display: inline-block;
     height: 53px;
     width: 118px;
+
     .btn-primary {
         height: 100%;
         width: 100%;
@@ -19,6 +20,21 @@
         white-space: nowrap;
         vertical-align: middle;
         border-radius: 2px;
+    }
+
+    .small {
+        font-size: 1.4rem;
+        font-weight: 400;
+    }
+
+    .medium {
+        font-size: 1.6rem;
+        font-weight: 500;
+    }
+
+    .large {
+        font-size: 1.8rem;
+        font-weight: 700;
     }
 
     .primary {

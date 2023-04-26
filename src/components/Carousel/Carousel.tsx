@@ -214,8 +214,9 @@ function Carousel() {
                     </div>
                 </div>
                 <div className={cx("dots")}>
-                    {dotsArr.map((dot) => (
+                    {dotsArr.map((dot, index) => (
                         <button
+                            key={index}
                             onClick={() => setActive(dot)}
                             className={cx("dot", {
                                 "dot-active": dot === active,

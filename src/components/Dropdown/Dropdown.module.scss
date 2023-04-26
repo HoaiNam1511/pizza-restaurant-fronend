@@ -1,0 +1,23 @@
+@import "../../scss/mixin";
+@import "../../components/GlobalComponent/GlobalStyle.module.scss";
+
+.dropdown-wrapper {
+    display: flex;
+    align-items: center;
+    border: 2px solid $primary-color-1;
+    width: fit-content;
+    height: 42px;
+    width: 100%;
+    .select {
+        width: 100%;
+        height: 100%;
+        min-height: 30px;
+        height: 100%;
+        flex: 1;
+        padding: 0 3px;
+        font-size: 1.8rem;
+        border: none;
+        outline: none;
+        font-size: 1.6rem;
+    }
+}

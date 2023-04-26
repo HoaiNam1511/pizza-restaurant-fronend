@@ -8,12 +8,16 @@ interface PrimaryButton {
     outline?: boolean;
     color?: string;
     className?: string;
+    fontWeight?: string;
+    onClick?: () => void;
 }
 function PrimaryButton({
     children,
     outline = false,
     color,
     className,
+    fontWeight,
+    onClick,
 }: PrimaryButton) {
     return (
         <div className={cx("wrapper-btn", className)}>
@@ -25,11 +29,12 @@ function PrimaryButton({
                     "btn-primary",
                     "primary",
                     color,
-
                     {
                         outline: outline,
-                    }
+                    },
+                    fontWeight
                 )}
+                onClick={onClick}
             >
                 {children}
             </button>

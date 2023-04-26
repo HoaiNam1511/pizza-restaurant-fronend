@@ -3,7 +3,7 @@ import styles from "./Menu.module.scss";
 import * as productServices from "../../services/productServices";
 import { useState, useEffect } from "react";
 import * as interfaceGlobal from "../../types/index";
-import MenuItem from "./MenuItem";
+import MenuItem from "./Item";
 import "aos/dist/aos.css";
 import Aos from "aos";
 const cx = classNames.bind(styles);
@@ -31,9 +31,9 @@ function Menu() {
                         data-aos-offset="200"
                         data-aos-delay="50"
                         data-aos-duration="1000"
-                        data-aos-easing="ease-in-out"
-                        data-aos-anchor-placement="center-center"
+                        data-aos-anchor-placement="center-bottom"
                         className={cx("col-12 col-md-6", "item")}
+                        key={index}
                     >
                         <MenuItem
                             key={index}

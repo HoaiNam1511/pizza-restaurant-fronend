@@ -8,6 +8,7 @@ import HeaderSection from "../../components/HeaderSection/HeaderSection";
 import { useEffect, useState } from "react";
 import * as interfaceGlobal from "../../types/index";
 import * as productServices from "../../services/productServices";
+import ModalQuickView from "../../components/ModalQuickView/ModalQuickView";
 import Menu from "../../components/Menu/Menu";
 import "aos/dist/aos.css";
 import Aos from "aos";
@@ -26,12 +27,20 @@ function Home() {
     }, []);
 
     useEffect(() => {
-        Aos.init({ duration: 2000, once: true, mirror: false });
+        Aos.init({
+            duration: 2000,
+            once: true,
+            mirror: false,
+            anchorPlacement: "top-bottom",
+            offset: 200,
+            disable: window.innerWidth < 768,
+        });
     }, []);
 
     return (
         <div className={cx("wrapper")}>
             <Carousel />
+            <ModalQuickView />
             {/* Info */}
             <div className={cx("row g-0", "info-social")}>
                 <div className={cx("col-12 col-md-8", "info")}>
@@ -95,11 +104,7 @@ function Home() {
                     {products.map((product, index) => (
                         <div
                             data-aos="fade-up"
-                            data-aos-offset="200"
-                            // data-aos-delay="50"
-                            data-aos-duration="1000"
                             data-aos-easing="ease-in-out"
-                            data-aos-anchor-placement="top-bottom"
                             key={index}
                             className={cx("col-12 col-xl-3 col-lg-4 col-md-6")}
                         >

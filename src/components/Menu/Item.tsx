@@ -1,14 +1,14 @@
 import classNames from "classnames/bind";
 import styles from "./Menu.module.scss";
-import image from "../../assets/images/h3-product-img-1a.png";
 import * as interfaceGlobal from "../../types/index";
+import ItemMenu from "../ItemMenu/ItemMenu";
 
 const cx = classNames.bind(styles);
-interface MenuItem {
+interface Item {
     className?: string;
     data: interfaceGlobal.Product;
 }
-function MenuItem({ className, data }: MenuItem) {
+function Item({ className, data }: Item) {
     return (
         <div className={cx(className)}>
             <div className={cx("menu-item")}>
@@ -21,15 +21,13 @@ function MenuItem({ className, data }: MenuItem) {
                     />
                 </div>
                 <div className={cx("item-2")}>
-                    <div className={cx("item-2_block-1")}>
-                        <span>{data.name}</span>
-                        <span>
-                            {data.price.toLocaleString("en-US", {
-                                style: "currency",
-                                currency: "USD",
-                            })}
-                        </span>
-                    </div>
+                    <ItemMenu
+                        title={data.name}
+                        value={data.price.toLocaleString("en-US", {
+                            style: "currency",
+                            currency: "USD",
+                        })}
+                    />
                     <div className={cx("item-2_block-2")}>
                         <span>{data.material}</span>
                     </div>
@@ -39,4 +37,4 @@ function MenuItem({ className, data }: MenuItem) {
     );
 }
 
-export default MenuItem;
+export default Item;
