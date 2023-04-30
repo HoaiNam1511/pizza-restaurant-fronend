@@ -10,6 +10,7 @@ $primary-color: #fac564;
 $black-color: #121618;
 $text-price-color: #d2401e;
 $primary-color-1: #b7903c;
+$border-smoke: 1px solid rgba(255, 255, 255, 0.3);
 
 * {
     box-sizing: border-box;
@@ -62,6 +63,21 @@ table {
         }
         td {
             border-bottom: 1px solid $primary-color;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
     }
+}
+
+.title-warning {
+    font-size: 1.3rem;
+    color: $text-smoke-color;
+    color: #dc3545;
+    font-style: italic;
+    font-family: 300;
+}
+
+.input-warning {
+    border: 1px solid #ff2c2c;
 }

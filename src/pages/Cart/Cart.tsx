@@ -1,28 +1,24 @@
 import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import classNames from "classnames/bind";
-import styles from "./Cart.module.scss";
-import SelectQuantity from "../../components/SelectQuantity/SelectQuantity";
 import ClearIcon from "@mui/icons-material/Clear";
-import { useSelector } from "react-redux";
-import { selectCart } from "../../redux/selector";
+
+import config from "../../config";
+import styles from "./Cart.module.scss";
+import Empty from "../../components/Empty/Empty";
 import TotalComponent from "../../components/TotalComponent/TotalComponent";
-import { removeProductCart, updateCart } from "../../redux/slice/product";
-import { convertToUSD } from "../../custom";
+import SelectQuantity from "../../components/SelectQuantity/SelectQuantity";
+
 import * as globalInterface from "../../types";
 import * as staticData from "../../data";
-import { useDispatch } from "react-redux";
-import { setProductId } from "../../redux/slice/product";
-import Empty from "../../components/Empty/Empty";
-import { useNavigate } from "react-router-dom";
-import config from "../../config";
-const cx = classNames.bind(styles);
 
-interface Total {
-    shipping: number;
-    tax: number;
-    subtotal: number;
-    total: number;
-}
+import { removeProductCart, updateCart } from "../../redux/slice/product";
+import { convertToUSD } from "../../custom";
+import { setProductId } from "../../redux/slice/product";
+import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
+import { selectCart } from "../../redux/selector";
+const cx = classNames.bind(styles);
 
 interface UpdateCart {
     product: globalInterface.ProductCart;
@@ -33,29 +29,6 @@ function Cart() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const carts = useSelector(selectCart);
-    const [totalCart, setTotalCart] = useState<Total>();
-
-    const handleTotal = () => {
-        let shipping: number = 0;
-        if (carts.length > 0) {
-            shipping = Math.random() * 7 + 2;
-        } else {
-            shipping = 0;
-        }
-        const subtotal: number = carts.reduce(
-            (acc, cur) => acc + cur.price * cur.quantity,
-            0
-        );
-        const tax: number = (subtotal / 100) * 4;
-        const total = shipping + subtotal + tax;
-        setTotalCart({
-            shipping: shipping,
-            subtotal: subtotal,
-            tax: tax,
-            total: total,
-        });
-    };
-
     const handleUpdateCart = ({ product, value }: UpdateCart) => {
         dispatch(updateCart({ ...product, quantity: value }));
     };
@@ -69,22 +42,18 @@ function Cart() {
         navigate(config.routes.detail);
     };
 
-    useEffect(() => {
-        handleTotal();
-    }, [carts]);
-
     return (
-        <div className={cx("wrapper")}>
+        <div className={cx("background")}>
             {carts.length > 0 ? (
-                <div className={cx("container")}>
+                <div className={cx("container", "wrapper")}>
                     <table className={cx("table")}>
                         <thead>
                             <tr className={cx("row g-0")}>
                                 <th className={cx("col-4")}>Product</th>
-                                <th className={cx("col-2")}>Quantity</th>
+                                <th className={cx("col-3")}>Quantity</th>
                                 <th className={cx("col-2")}>Size</th>
                                 <th className={cx("col-2")}>Price</th>
-                                <th className={cx("col-2")}>Remove</th>
+                                <th className={cx("col-1")}>Remove</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -114,8 +83,9 @@ function Cart() {
                                             {product.name}
                                         </span>
                                     </td>
-                                    <td className={cx("col-2")}>
+                                    <td className={cx("col-3")}>
                                         <SelectQuantity
+                                            className={cx("cart-select")}
                                             onChange={(value) =>
                                                 handleUpdateCart({
                                                     product,
@@ -136,7 +106,7 @@ function Cart() {
                                     <td className={cx("col-2")}>
                                         {convertToUSD(product.price)}
                                     </td>
-                                    <td className={cx("col-2")}>
+                                    <td className={cx("col-1")}>
                                         <button
                                             className={cx("btn-remove")}
                                             onClick={() =>
@@ -150,12 +120,13 @@ function Cart() {
                             ))}
                         </tbody>
                     </table>
-                    <TotalComponent
-                        shipping={totalCart?.shipping || 0}
-                        tax={totalCart?.tax || 0}
-                        subtotal={totalCart?.subtotal || 0}
-                        total={totalCart?.total || 0}
-                    />
+                    <div className={cx("total-container")}>
+                        <TotalComponent
+                            titleBtn="Check Out"
+                            onClick={() => navigate(config.routes.order)}
+                            className={cx("total")}
+                        />
+                    </div>
                 </div>
             ) : (
                 <Empty

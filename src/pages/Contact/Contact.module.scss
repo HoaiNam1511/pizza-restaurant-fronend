@@ -1,2 +1,40 @@
 @import "../../scss/mixin";
 @import "../../components/GlobalComponent/GlobalStyle.module.scss";
+
+.background {
+    background: url("../../assets/images/bg_4.jpg") no-repeat fixed;
+    background-size: cover;
+
+    .wrapper {
+        .slide-background {
+            @include slide-background;
+            z-index: 0;
+            .overlay {
+                @include overlay-slide-background;
+                z-index: 0;
+            }
+
+            .content {
+                @include slide-content;
+                h1 {
+                    z-index: 100;
+                    color: $text-light-color;
+                    font-size: 4rem;
+                }
+            }
+        }
+
+        section {
+            max-width: 1140px;
+        }
+        .header-title {
+            @include font-header;
+            margin-bottom: 15px;
+
+            color: red;
+            h2 {
+                font-family: "Josefin Sans", Arial, sans-serif;
+            }
+        }
+    }
+}

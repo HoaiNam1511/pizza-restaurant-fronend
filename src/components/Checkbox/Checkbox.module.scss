@@ -1,0 +1,45 @@
+@import "../../scss/mixin";
+@import "../../components/GlobalComponent/GlobalStyle.module.scss";
+
+$checkbox-dimension: 20px;
+
+.checkbox {
+    position: relative;
+    display: inline-block;
+    width: $checkbox-dimension;
+    height: $checkbox-dimension;
+    .checkbox-input {
+        height: 100%;
+        width: 100%;
+        visibility: hidden;
+    }
+    .checkbox-label {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+        border: 2px solid $text-smoke-color;
+        //Check icon
+        &::after {
+            position: absolute;
+            content: "";
+            left: 30%;
+            top: 5%;
+            transform: translate(-50%, -50%);
+            height: 12px;
+            width: 6px;
+            border: 2px solid $text-smoke-color;
+            transform: rotate(45deg);
+            border-left: transparent;
+            border-top: transparent;
+            opacity: 0;
+        }
+    }
+
+    .checkbox-input:checked ~ .checkbox-label {
+        &::after {
+            opacity: 1;
+        }
+    }
+}

@@ -6,6 +6,15 @@
     position: relative;
     margin-bottom: 80px;
 
+    &:hover {
+        @for $i from 1 through 2 {
+            .button:nth-last-child(#{$i}) {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0px);
+            }
+        }
+    }
     .card-image {
         position: relative;
         padding: 0 40px;
@@ -99,10 +108,17 @@
         .button {
             height: 47px;
             margin: 0 3px;
-
+            transform: translateY(70px);
+            transition: all 0.3s ease-in-out;
+            opacity: 0;
+            visibility: hidden;
             @include media-breakpoint-sm() {
                 height: 42px;
             }
+        }
+
+        .button + .button {
+            transition-delay: 0.05s;
         }
 
         @include media-breakpoint-lg() {

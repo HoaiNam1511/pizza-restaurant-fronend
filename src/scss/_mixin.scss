@@ -59,3 +59,64 @@
     height: 1px;
     margin: 40px 0px;
 }
+
+@mixin input-custom {
+    border: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    height: 58px;
+    padding-left: 0;
+    padding-right: 0;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.9);
+    outline: none;
+    font-size: 1.6rem;
+    transition: all 0.3s ease;
+    &:focus {
+        border-bottom: 1px solid $primary-color;
+    }
+
+    @include media-breakpoint-sm() {
+        font-size: 1.4rem;
+    }
+}
+
+@mixin font-header {
+    color: $text-light-color;
+    font-family: "Josefin Sans", Arial, sans-serif;
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+
+@mixin slide-background {
+    background-image: url("../../assets/images/bg_3.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 750px;
+    position: relative;
+    z-index: 0;
+}
+
+@mixin overlay-slide-background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #000;
+    opacity: 0.5;
+}
+
+@mixin slide-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    max-width: 1140px;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    height: 100%;
+}

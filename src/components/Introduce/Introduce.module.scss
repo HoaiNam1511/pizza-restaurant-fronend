@@ -1,0 +1,49 @@
+@import "../../scss/mixin";
+@import "../../components/GlobalComponent/GlobalStyle.module.scss";
+
+.introduce-wrapper {
+    .introduce {
+        .image {
+            background: url("../../assets/images/about.jpg");
+            padding: 5%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+
+            @include media-breakpoint-md() {
+                height: 300px;
+            }
+        }
+
+        .content {
+            padding: 5%;
+
+            @include media-breakpoint-md() {
+                padding: 30px 15px;
+            }
+
+            .header {
+                vertical-align: bottom;
+                color: $text-light-color;
+                font-size: 3rem;
+                text-transform: uppercase;
+                margin-bottom: 24px;
+                font-family: "Josefin Sans", Arial, sans-serif;
+                span {
+                    color: $primary-color;
+                }
+                .pizza-icon {
+                    margin-top: -8px;
+                    width: 2.8rem;
+                }
+            }
+
+            p {
+                color: $text-smoke-color;
+                font-size: 1.6rem;
+                font-weight: 300;
+                font-family: "Poppins", Arial, sans-serif;
+            }
+        }
+    }
+}

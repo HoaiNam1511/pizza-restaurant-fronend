@@ -16,7 +16,7 @@ function ItemLabel({
 }: ItemLabel) {
     return (
         <div className={cx(className, "block")}>
-            <span className={cx("title-header")}>{`${title}:`}&nbsp;</span>
+            <div className={cx("title-header")}>{`${title}:`}&nbsp;</div>
             <span className={cx("title")}>{content}</span>
         </div>
     );

@@ -3,11 +3,15 @@
 
 $td-height: 100px;
 
-.wrapper {
+.background {
     background: url("../../assets/images/bg_4.jpg") no-repeat fixed;
     background-size: cover;
 
-    .container {
+    @include media-breakpoint-xl() {
+        padding: 0 10px;
+    }
+
+    .wrapper {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -20,17 +24,27 @@ $td-height: 100px;
         margin-top: 50px;
         thead {
             height: 50px;
+            @include media-breakpoint-sm() {
+                height: 38px;
+            }
             padding: 0 30px;
             tr {
-                height: 50px;
+                height: 100%;
             }
         }
 
         tr {
             height: $td-height;
+
+            @include media-breakpoint-sm() {
+                height: $td-height - 40px;
+            }
             th,
             td {
                 text-align: center;
+                @include media-breakpoint-sm() {
+                    font-size: 1.4rem;
+                }
             }
             td {
                 display: flex;
@@ -41,9 +55,16 @@ $td-height: 100px;
                     &:hover {
                         cursor: pointer;
                     }
+
+                    @include media-breakpoint-sm() {
+                        display: none;
+                    }
                 }
                 span {
                     padding-left: 10px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
                     &:hover {
                         cursor: pointer;
                     }
@@ -54,6 +75,13 @@ $td-height: 100px;
             }
         }
 
+        .cart-select {
+            max-width: 180px;
+            @include media-breakpoint-sm() {
+                height: 36px;
+            }
+        }
+
         .btn-remove {
             background-color: transparent;
             border: none;
@@ -61,7 +89,23 @@ $td-height: 100px;
             svg {
                 font-size: 3rem;
                 color: aliceblue;
+
+                @include media-breakpoint-sm() {
+                    font-size: 2rem;
+                }
             }
         }
+    }
+
+    .total-container {
+        max-width: 1200px;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        .total {
+            margin-top: 30px;
+            width: 260px;
+        }
+        margin-bottom: 30px;
     }
 }

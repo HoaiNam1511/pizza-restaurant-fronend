@@ -231,7 +231,7 @@ function Detail() {
                         <div className={cx("row g-0", "content")}>
                             {staticData.AdditionalInformationData.map(
                                 (info, index) => (
-                                    <p
+                                    <div
                                         className={cx("col-3")}
                                         key={index}
                                     >
@@ -247,7 +247,7 @@ function Detail() {
                                             title="Dimension"
                                             content={info.dimension}
                                         />
-                                    </p>
+                                    </div>
                                 )
                             )}
                         </div>
@@ -257,7 +257,7 @@ function Detail() {
                 <div className={cx("row g-0")}>
                     <h1 className={cx("list-header")}>RELATED PRODUCTS</h1>
                     {products
-                        .filter((product, index) => product.id !== product?.id)
+                        .filter((product, index) => product.id !== productId)
                         .slice(0, 4)
                         .map((itemFilter, index) => (
                             <div

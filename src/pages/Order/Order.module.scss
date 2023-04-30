@@ -1,0 +1,128 @@
+@import "../../scss/mixin";
+@import "../../components/GlobalComponent/GlobalStyle.module.scss";
+
+.background {
+    padding: 50px 0px;
+    background: url("../../assets/images/bg_4.jpg") no-repeat fixed;
+    background-size: cover;
+
+    .wrapper {
+        max-width: 1140px;
+        padding: 0px 50px;
+
+        @include media-breakpoint-lg() {
+            padding: 0 10px;
+        }
+
+        .header-title {
+            @include font-header;
+            margin-bottom: 15px;
+        }
+
+        // form
+        .left {
+            .form {
+                margin: 0 -15px 30px;
+
+                @include media-breakpoint-lg() {
+                    margin: 0 -10px 30px;
+                }
+                .form-group {
+                    padding: 0 15px;
+                    height: 80px;
+
+                    @include media-breakpoint-lg() {
+                        padding: 0 10px;
+                    }
+                    input,
+                    select,
+                    textarea {
+                        @include input-custom;
+                        width: 100%;
+                        margin-bottom: 0;
+                    }
+
+                    textarea {
+                        min-height: 150px;
+                        max-height: 350px;
+                    }
+
+                    select {
+                        option {
+                            color: black;
+                        }
+                    }
+                }
+            }
+        }
+
+        .right {
+            padding-left: 40px;
+            @include media-breakpoint-lg() {
+                padding-left: 0px;
+            }
+            .list {
+                width: 100%;
+            }
+            .payment {
+                .payment-item {
+                    span {
+                        color: $text-smoke-color;
+                        font-size: 1.6rem;
+                        font-weight: 400;
+
+                        @include media-breakpoint-sm() {
+                            font-size: 1.4rem;
+                        }
+                    }
+                    .payment-header {
+                        height: 50px;
+                        display: flex;
+                        align-items: center;
+                        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+                        span {
+                            margin-left: 10px;
+                        }
+                    }
+
+                    .payment-detail {
+                        height: fit-content;
+                        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+                        opacity: 0;
+                        visibility: hidden;
+                        height: 0;
+                        padding: 10px 0px;
+                        span {
+                            font-weight: 300;
+                            line-height: 1.8;
+                            font-size: 1.5rem;
+
+                            @include media-breakpoint-sm() {
+                                font-size: 1.3rem;
+                            }
+                        }
+                    }
+
+                    .payment-show {
+                        opacity: 1;
+                        visibility: visible;
+                        height: fit-content;
+                    }
+                }
+            }
+            .order-total {
+                width: 100%;
+                margin-top: 30px;
+            }
+        }
+    }
+}
+
+@keyframes dropdown {
+    0% {
+        height: 0;
+    }
+    100% {
+        height: fit-content;
+    }
+}

@@ -1,14 +1,22 @@
+import Aos from "aos";
+import "aos/dist/aos.css";
 import classNames from "classnames/bind";
+
 import styles from "./Card.module.scss";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
+import config from "../../config";
+
 import * as interfaceGlobal from "../../types/index";
+import * as staticData from "../../data";
+
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import "aos/dist/aos.css";
-import Aos from "aos";
-import { setProductId, setProductDetail } from "../../redux/slice/product";
+import {
+    setProductId,
+    setProductDetail,
+    setProductCart,
+} from "../../redux/slice/product";
 import { setModalOpen } from "../../redux/slice/globalSlice";
-import config from "../../config";
 import { convertToUSD } from "../../custom";
 
 const cx = classNames.bind(styles);
@@ -33,6 +41,16 @@ function Card({ data, animationDisable = false, showButton = false }: Data) {
         navigate(config.routes.detail);
     };
 
+    const product: interfaceGlobal.ProductCart = {
+        id: data.id,
+        name: data.name,
+        price: data.price,
+        image: data.image,
+        description: data.description,
+        quantity: 1,
+        size: staticData.sizeData[0]?.value.toString(),
+    };
+
     const onBtnQuickViewClick = () => {
         dispatch(setProductDetail(data));
         dispatch(setModalOpen());
@@ -55,7 +73,10 @@ function Card({ data, animationDisable = false, showButton = false }: Data) {
             <h2 className={cx("card-name")}>{data.name}</h2>
             <h2 className={cx("card-price")}>{convertToUSD(data.price)}</h2>
             <div className={cx("buttons", { "show-button": showButton })}>
-                <PrimaryButton className={cx("button")}>
+                <PrimaryButton
+                    className={cx("button")}
+                    onClick={() => dispatch(setProductCart(product))}
+                >
                     Add to card
                 </PrimaryButton>
                 <PrimaryButton

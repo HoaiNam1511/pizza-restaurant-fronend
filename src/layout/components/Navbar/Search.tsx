@@ -36,7 +36,9 @@ function Search({ className }: Search) {
                 </div>
 
                 <NavLink
-                    className={cx("col-4", "link")}
+                    className={(nav) =>
+                        cx("col-4", "link", { active: nav.isActive })
+                    }
                     to={navData[navData.length - 1].to}
                 >
                     <DeliveryIcon className={cx("nav-icon")} />
@@ -49,9 +51,14 @@ function Search({ className }: Search) {
                     <li className={cx("nav-item")}>
                         <SearchIcon className={cx("nav-icon", "icon-mb")} />
                     </li>
-                    <li className={cx("nav-item")}>
-                        <DeliveryIcon className={cx("nav-icon", "icon-mb")} />
-                    </li>
+                    <NavLink to={navData[navData.length - 1].to}>
+                        <li className={cx("nav-item")}>
+                            <DeliveryIcon
+                                className={cx("nav-icon", "icon-mb")}
+                            />
+                        </li>
+                    </NavLink>
+
                     <li
                         className={cx("menu", "nav-item")}
                         onClick={() => handleMenuIsOpen(!menuIsOpen)}

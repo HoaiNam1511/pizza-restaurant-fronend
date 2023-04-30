@@ -43,7 +43,7 @@ function Carousel() {
                             )}
                         >
                             <div className={cx("overlay")}></div>
-                            <div className={cx("container")}>
+                            <div className={cx("content")}>
                                 <div className={cx("row g-0", "item")}>
                                     <div
                                         className={cx(
@@ -103,7 +103,7 @@ function Carousel() {
                             )}
                         >
                             <div className={cx("overlay")}></div>
-                            <div className={cx("container")}>
+                            <div className={cx("content")}>
                                 <div className={cx("row g-0", "item")}>
                                     <div
                                         className={cx(
@@ -159,7 +159,7 @@ function Carousel() {
                             )}
                         >
                             <div className={cx("overlay")}></div>
-                            <div className={cx("container")}>
+                            <div className={cx("content")}>
                                 <div
                                     className={cx(
                                         "row g-0 d-flex justify-content-center",

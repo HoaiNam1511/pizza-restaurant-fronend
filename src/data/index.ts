@@ -6,7 +6,12 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import avatar1 from "../assets/chef/person_1.jpg";
+import avatar2 from "../assets/chef/person_2.jpg";
+import avatar3 from "../assets/chef/person_3.jpg";
+import avatar4 from "../assets/chef/person_4.jpg";
 import * as globalInterface from "../types";
+import { PizzaIcon1, Award, ChefHat, Like } from "../assets/icon/icon";
 interface NavData {
     to: string;
     title: string;
@@ -186,5 +191,87 @@ export const AdditionalInformationData: AdditionalInformation[] = [
         size: "Extra large",
         weight: "2.4 kg",
         dimension: "36 × 36 × 2.6 cm",
+    },
+];
+
+export interface Table {
+    title: string;
+    value: number;
+}
+
+export const TableData: Table[] = [
+    {
+        title: "1 People",
+        value: 1,
+    },
+    {
+        title: "2 People",
+        value: 2,
+    },
+    {
+        title: "4 People",
+        value: 4,
+    },
+    {
+        title: "6 People",
+        value: 6,
+    },
+    {
+        title: "8 People",
+        value: 8,
+    },
+];
+
+export const ChefData: globalInterface.Chef[] = [
+    {
+        image: avatar1,
+        name: "TOM SMITH",
+        position: "Hair Specialist",
+        description:
+            "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+    },
+    {
+        image: avatar2,
+        name: "MARK WILSON",
+        position: "Hair Specialist",
+        description:
+            "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+    },
+    {
+        image: avatar3,
+        name: "PATRICK JACOBSON",
+        position: "Hair Specialist",
+        description:
+            "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+    },
+    {
+        image: avatar4,
+        name: "IVAN DORCHSNER",
+        position: "Beard Specialist",
+        description:
+            "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+    },
+];
+
+export const infoAwardData: globalInterface.InfoAward[] = [
+    {
+        icon: PizzaIcon1,
+        title1: 3,
+        title2: "Pizza Branches",
+    },
+    {
+        icon: Award,
+        title1: 16,
+        title2: "Number of Awards",
+    },
+    {
+        icon: Like,
+        title1: 10678,
+        title2: "Happy Customer",
+    },
+    {
+        icon: ChefHat,
+        title1: 86,
+        title2: "Staff",
     },
 ];

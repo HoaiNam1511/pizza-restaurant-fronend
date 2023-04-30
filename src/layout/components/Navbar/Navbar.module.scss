@@ -254,6 +254,10 @@ nav {
             color: $primary-color;
         }
 
+        .active > .nav-icon {
+            color: $primary-color;
+        }
+
         .icon-mb {
             &:hover {
                 cursor: pointer;

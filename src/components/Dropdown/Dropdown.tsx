@@ -9,9 +9,10 @@ interface Dropdown {
     className?: string;
     onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
     data: any;
+    name?: string;
 }
 
-function Dropdown({ className, onChange, data = [] }: Dropdown) {
+function Dropdown({ className, onChange, data = [], name }: Dropdown) {
     const [value, setValue] = useState<any>();
     const handleDropdownChange = (
         event: React.ChangeEvent<HTMLSelectElement>
