@@ -1,0 +1,70 @@
+@import "../../scss/mixin";
+@import "../../components/GlobalComponent/GlobalStyle.module.scss";
+
+.background {
+    background: url("../../assets/images/bg_4.jpg") no-repeat fixed;
+    background-size: cover;
+    .wrapper {
+        .filter {
+            padding: 30px 0px 60px;
+            ul {
+                display: flex;
+                list-style: none;
+                li {
+                    flex: 1;
+                    font-size: 1.6rem;
+
+                    span {
+                        margin-left: 10px;
+                        color: $text-light-color;
+                        transition: all 0.2s linear;
+                    }
+
+                    &:hover {
+                        cursor: pointer;
+                        span {
+                            color: $primary-color;
+                        }
+                        img {
+                            animation: shake 0.82s
+                                cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+                            transform: translate3d(0, 0, 0);
+                        }
+                    }
+                }
+
+                .active {
+                    span {
+                        color: $primary-color;
+                    }
+                }
+            }
+        }
+
+        .list {
+        }
+    }
+}
+
+@keyframes shake {
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+        transform: translate3d(1px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-2px, 0, 0);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(2px, 0, 0);
+    }
+}

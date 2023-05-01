@@ -36,8 +36,11 @@ function About() {
                 <section className={cx("counter")}>
                     <div className={cx("overlay")}></div>
                     <div className={cx("row g-0", "list-1")}>
-                        {staticData.infoAwardData.map((info) => (
-                            <div className={cx("col-12 col-sm-3", "item-1")}>
+                        {staticData.infoAwardData.map((info, index) => (
+                            <div
+                                key={index}
+                                className={cx("col-12 col-sm-3", "item-1")}
+                            >
                                 <CardInfo data={info} />
                             </div>
                         ))}

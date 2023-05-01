@@ -66,3 +66,9 @@ export interface InfoAward {
     title1: string | number;
     title2: string;
 }
+
+export interface Category {
+    id: number;
+    name: string;
+    image: string;
+}

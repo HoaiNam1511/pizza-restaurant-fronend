@@ -14,3 +14,8 @@ export const httpRequestBooking = axios.create({
     baseURL: process.env.REACT_APP_SERVER_URL + "/booking",
     withCredentials: true,
 });
+
+export const httpRequestCategory = axios.create({
+    baseURL: process.env.REACT_APP_SERVER_URL + "/category",
+    withCredentials: true,
+});

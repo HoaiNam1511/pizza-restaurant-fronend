@@ -18,8 +18,12 @@ const cx = classNames.bind(styles);
 function Home() {
     const [products, setProducts] = useState<interfaceGlobal.Product[]>([]);
     const getProduct = async () => {
-        const res = await services.getProduct({ limit: 8 });
-        setProducts(res.data);
+        try {
+            const res = await services.getProduct({ limit: 8 });
+            setProducts(res.data);
+        } catch (err) {
+            console.log(err);
+        }
     };
 
     useEffect(() => {
