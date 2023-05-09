@@ -1,7 +1,8 @@
 import classNames from "classnames/bind";
+import { useNavigate } from "react-router-dom";
+
 import styles from "./Empty.module.scss";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
-import { useNavigate } from "react-router-dom";
 import config from "../../config";
 const cx = classNames.bind(styles);
 

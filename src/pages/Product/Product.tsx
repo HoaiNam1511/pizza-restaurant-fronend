@@ -1,6 +1,7 @@
 import classNames from "classnames/bind";
-import styles from "./Product.module.scss";
 import { useState, useEffect } from "react";
+
+import styles from "./Product.module.scss";
 import * as globalInterface from "../../types";
 import * as services from "../../services";
 import Card from "../../components/Card/Card";
@@ -10,7 +11,7 @@ const cx = classNames.bind(styles);
 function Product() {
     const [categorys, setCategorys] = useState<globalInterface.Category[]>([]);
     const [products, setProducts] = useState<globalInterface.Product[]>([]);
-    const [categoryId, setCategoryId] = useState<number>();
+    const [categoryId, setCategoryId] = useState<number>(0);
 
     const getCategory = async () => {
         try {
@@ -30,10 +31,23 @@ function Product() {
         }
     };
 
+    const getProductFilter = async (id: number) => {
+        try {
+            const res = await services.productFilter({ category: id });
+            setProducts(res.data);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     const handleProductFilter = async (id: number) => {
-        setCategoryId(id);
-        const res = await services.productFilter({ category: id });
-        setProducts(res.data);
+        if (categoryId === id) {
+            setCategoryId(0);
+            getProduct();
+        } else {
+            setCategoryId(id);
+            getProductFilter(id);
+        }
     };
 
     useEffect(() => {

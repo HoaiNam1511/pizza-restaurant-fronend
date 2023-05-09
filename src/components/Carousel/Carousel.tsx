@@ -1,16 +1,16 @@
+import { useState, useEffect, useRef } from "react";
 import classNames from "classnames/bind";
+
 import styles from "./Carousel.module.scss";
 import image1 from "../../assets/images/bg_1.png";
 import image2 from "../../assets/images/bg_2.png";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
-import { useState, useEffect, useRef } from "react";
 
 const cx = classNames.bind(styles);
 function Carousel() {
     const refTimeSlide = useRef<NodeJS.Timeout>();
     const dotsArr = [0, 1, 2];
     const [active, setActive] = useState<number>(0);
-    const [fade, setFade] = useState<boolean>(false);
 
     useEffect(() => {
         refTimeSlide.current = setInterval(() => {

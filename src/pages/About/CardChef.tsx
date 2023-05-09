@@ -1,6 +1,5 @@
 import classNames from "classnames/bind";
 import styles from "./About.module.scss";
-import image from "../../assets/images/bg_1.jpg";
 import * as globalInterface from "../../types";
 
 const cx = classNames.bind(styles);

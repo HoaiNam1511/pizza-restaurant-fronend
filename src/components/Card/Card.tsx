@@ -15,7 +15,7 @@ import {
     setProductId,
     setProductDetail,
     setProductCart,
-} from "../../redux/slice/product";
+} from "../../redux/slice/productSlice";
 import { setModalOpen } from "../../redux/slice/globalSlice";
 import { convertToUSD } from "../../custom";
 

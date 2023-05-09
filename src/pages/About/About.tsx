@@ -1,11 +1,12 @@
 import classNames from "classnames/bind";
+
 import styles from "./About.module.scss";
 import Contact from "../../components/Contact/Contact";
 import Introduce from "../../components/Introduce/Introduce";
 import HeaderSection from "../../components/HeaderSection/HeaderSection";
 import CardChef from "./CardChef";
-import * as staticData from "../../data";
 import CardInfo from "./CardInfo";
+import * as staticData from "../../data";
 
 const cx = classNames.bind(styles);
 function About() {
@@ -26,8 +27,11 @@ function About() {
                     line
                 />
                 <div className={cx("row g-0", "list")}>
-                    {staticData.ChefData.map((info) => (
-                        <div className={cx("item", "col-12 col-sm-6 col-lg-3")}>
+                    {staticData.ChefData.map((info, index) => (
+                        <div
+                            key={index}
+                            className={cx("item", "col-12 col-sm-6 col-lg-3")}
+                        >
                             <CardChef data={info} />
                         </div>
                     ))}

@@ -1,11 +1,12 @@
 import classNames from "classnames/bind";
 import { useSelector, useDispatch } from "react-redux";
+import CloseIcon from "@mui/icons-material/Close";
+
 import styles from "./ModalQuickView.module.scss";
 import ItemMenu from "../ItemMenu/ItemMenu";
 import { selectProductDetail, selectModalOpen } from "../../redux/selector";
 import { setModalClose } from "../../redux/slice/globalSlice";
 import { nutriData } from "../../data";
-import CloseIcon from "@mui/icons-material/Close";
 const cx = classNames.bind(styles);
 
 function ModalQuickView() {

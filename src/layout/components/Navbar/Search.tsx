@@ -1,13 +1,14 @@
 import classNames from "classnames/bind";
-import styles from "./Navbar.module.scss";
-import { navData } from "../../../data/";
-import { NavLink } from "react-router-dom";
-import { DeliveryIcon, SearchIcon } from "../../../assets/icon/icon";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+
+import styles from "./Navbar.module.scss";
+import { navData } from "../../../data/";
+import { DeliveryIcon, SearchIcon } from "../../../assets/icon/icon";
 import { setMenuClose, setMenuOpen } from "../../../redux/slice/globalSlice";
-import { selectCart } from "../../../redux/selector";
+import { selectCart, selectMenuIsOpen } from "../../../redux/selector";
 const cx = classNames.bind(styles);
 interface Search {
     className: string;
@@ -17,6 +18,7 @@ function Search({ className }: Search) {
     const dispatch = useDispatch();
     const cart = useSelector(selectCart);
     const [menuIsOpen, setMenuIsOpenState] = useState<boolean>(false);
+    const selectMenuOpen = useSelector(selectMenuIsOpen);
 
     const handleMenuIsOpen = (value: boolean): void => {
         if (value) {
@@ -26,6 +28,10 @@ function Search({ className }: Search) {
         }
         setMenuIsOpenState(value);
     };
+
+    useEffect(() => {
+        setMenuIsOpenState(selectMenuOpen);
+    }, [selectMenuOpen]);
 
     return (
         <div className={cx(className)}>
@@ -43,7 +49,7 @@ function Search({ className }: Search) {
                 >
                     <DeliveryIcon className={cx("nav-icon")} />
                     {navData[navData.length - 1].title}
-                    {`(${cart.length})`}
+                    {`(${cart?.length})`}
                 </NavLink>
             </div>
             <div className={cx("nav-search-mobile")}>

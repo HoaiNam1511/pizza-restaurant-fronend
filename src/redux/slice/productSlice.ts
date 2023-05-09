@@ -1,8 +1,5 @@
 import * as interfaceGlobal from "../../types/index";
-import {} from "react-redux";
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface ProductState {
     productDetail: interfaceGlobal.Product | null;
     cartPizza: interfaceGlobal.ProductCart[];
@@ -55,7 +52,7 @@ const product = createSlice({
                     }
                 });
             } else {
-                state.cartPizza.push(actions.payload);
+                state.cartPizza.push();
             }
         },
 

@@ -1,6 +1,6 @@
 import classNames from "classnames/bind";
-import styles from "./Navbar.module.scss";
 
+import styles from "./Navbar.module.scss";
 import Nav from "./Nav";
 import Search from "./Search";
 import Brand from "./Brand";

@@ -1,19 +1,46 @@
+import { useState } from "react";
 import classNames from "classnames/bind";
+
 import styles from "./Contact.module.scss";
-import { Validator } from "../../validator/form";
 import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
+
+interface Contact {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+}
+
+const contactObj = {
+    name: "name",
+    email: "email",
+    subject: "subject",
+    message: "message",
+};
 
 const cx = classNames.bind(styles);
 function Contact() {
-    Validator({
-        form: "#customer-info",
-        elementWarning: "#elementWarning",
-        roles: [
-            Validator.isName("#name"),
-            Validator.isEmail("#email"),
-            Validator.isRequired("#subject"),
-        ],
+    const [contact, setContact] = useState({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
     });
+    const { name, email, subject, message } = contact;
+    // Validator({
+    //     form: "#customer-info",
+    //     elementWarning: "#elementWarning",
+    //     roles: [
+    //         Validator.isName("#name"),
+    //         Validator.isEmail("#email"),
+    //         Validator.isRequired("#subject"),
+    //     ],
+    // });
+
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setContact({ ...contact, [event.target.name]: event.target.value });
+    };
+
     return (
         <div className={cx("background")}>
             <div className={cx("container-fluid", "wrapper")}>
@@ -58,10 +85,12 @@ function Contact() {
                                 className={cx("col-12 col-sm-6", "form-group")}
                             >
                                 <input
-                                    id="name"
-                                    name="name"
+                                    id={contactObj.name}
+                                    name={contactObj.name}
+                                    value={name}
                                     placeholder="Your name"
                                     type="text"
+                                    onChange={(e) => handleInputChange(e)}
                                 />
                                 <span id="elementWarning"></span>
                             </div>
@@ -70,27 +99,32 @@ function Contact() {
                                 className={cx("col-12 col-sm-6", "form-group")}
                             >
                                 <input
-                                    id="email"
-                                    name="email"
+                                    id={contactObj.email}
+                                    name={contactObj.email}
+                                    value={email}
                                     placeholder="Email"
                                     type="text"
+                                    onChange={(e) => handleInputChange(e)}
                                 />
                                 <span id="elementWarning"></span>
                             </div>
 
                             <div className={cx("col-12", "form-group")}>
                                 <input
-                                    id="subject"
-                                    name="subject"
+                                    id={contactObj.subject}
+                                    name={contactObj.subject}
+                                    value={subject}
                                     placeholder="Subject"
                                     type="text"
+                                    onChange={(e) => handleInputChange(e)}
                                 />
                                 <span id="elementWarning"></span>
                             </div>
                             <div className={cx("col-12", "form-group")}>
                                 <textarea
-                                    name=""
-                                    id=""
+                                    name={contactObj.message}
+                                    id={contactObj.message}
+                                    value={message}
                                     placeholder="Message"
                                 ></textarea>
                             </div>

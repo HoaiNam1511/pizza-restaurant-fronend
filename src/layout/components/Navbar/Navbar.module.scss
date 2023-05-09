@@ -55,12 +55,16 @@ nav {
         }
 
         .brand-image {
-            width: 30px;
+            width: 36px;
             margin-right: 4px;
             height: auto;
 
             @include media-breakpoint-md() {
                 width: 5vw;
+            }
+
+            @include media-breakpoint-md() {
+                display: none;
             }
         }
 

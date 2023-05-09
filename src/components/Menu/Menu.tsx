@@ -1,10 +1,11 @@
+import { useState, useEffect } from "react";
 import classNames from "classnames/bind";
+import "aos/dist/aos.css";
+
 import styles from "./Menu.module.scss";
 import * as productServices from "../../services/productServices";
-import { useState, useEffect } from "react";
 import * as interfaceGlobal from "../../types/index";
 import MenuItem from "./Item";
-import "aos/dist/aos.css";
 import Aos from "aos";
 const cx = classNames.bind(styles);
 

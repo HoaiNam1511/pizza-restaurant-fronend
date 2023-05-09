@@ -1,17 +1,18 @@
+import Aos from "aos";
+import { useEffect, useState } from "react";
 import classNames from "classnames/bind";
+import "aos/dist/aos.css";
+
 import styles from "./Home.module.scss";
 import Carousel from "../../components/Carousel/Carousel";
 import Card from "../../components/Card/Card";
 import HeaderSection from "../../components/HeaderSection/HeaderSection";
-import { useEffect, useState } from "react";
 import * as interfaceGlobal from "../../types/index";
 import * as services from "../../services/index";
 import ModalQuickView from "../../components/ModalQuickView/ModalQuickView";
 import Menu from "../../components/Menu/Menu";
 import Introduce from "../../components/Introduce/Introduce";
 import Contact from "../../components/Contact/Contact";
-import "aos/dist/aos.css";
-import Aos from "aos";
 
 const cx = classNames.bind(styles);
 

@@ -16,7 +16,7 @@ import * as staticData from "../../data";
 
 import { convertToUSD } from "../../custom";
 import { selectProductId } from "../../redux/selector";
-import { setProductCart } from "../../redux/slice/product";
+import { setProductCart } from "../../redux/slice/productSlice";
 
 const cx = classNames.bind(styles);
 

@@ -1,9 +1,10 @@
+import { useState } from "react";
 import classNames from "classnames/bind";
+
 import styles from "./Booking.module.scss";
 import image from "../../assets/images/restaurant-3.jpeg";
 import * as staticData from "../../data";
 import { Validator } from "../../validator/form";
-import { useState } from "react";
 import * as globalInterface from "../../types";
 import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
 import * as services from "../../services/index";
@@ -24,10 +25,18 @@ function Booking() {
         form: "#form-booking",
         elementWarning: "#elementWarning",
         roles: [
+            Validator.isRequired("#customerName"),
+            Validator.isRequired("#email"),
+            Validator.isRequired("#phone"),
             Validator.isName("#customerName"),
             Validator.isEmail("#email"),
             Validator.isPhone("#phone"),
         ],
+        btnSubmit: "#btnSubmit",
+        message: {
+            messageSuccess: "Booking success",
+            messageError: "Cannot booking",
+        },
     });
 
     const [booking, setBooking] = useState<globalInterface.Booking>({
@@ -159,6 +168,7 @@ function Booking() {
                             <PrimaryButton
                                 className={cx("btn-booking")}
                                 onClick={handleSubmitBooking}
+                                id="btnSubmit"
                             >
                                 Booking
                             </PrimaryButton>

@@ -8,16 +8,36 @@
         .filter {
             padding: 30px 0px 60px;
             ul {
+                flex-wrap: wrap;
                 display: flex;
-                list-style: none;
+                justify-content: center;
                 li {
-                    flex: 1;
+                    width: 14.28%;
+                    text-align: center;
+                    display: inline-block;
                     font-size: 1.6rem;
+                    margin-bottom: 30px;
+                    @include media-breakpoint-lg() {
+                        width: 25%;
+                    }
 
+                    @include media-breakpoint-md() {
+                        width: 33.33%;
+                    }
+
+                    @include media-breakpoint-sm() {
+                        font-size: 1.4rem;
+                    }
                     span {
                         margin-left: 10px;
                         color: $text-light-color;
                         transition: all 0.2s linear;
+                    }
+
+                    img {
+                        @include media-breakpoint-sm() {
+                            width: 8vw;
+                        }
                     }
 
                     &:hover {
@@ -32,7 +52,6 @@
                         }
                     }
                 }
-
                 .active {
                     span {
                         color: $primary-color;

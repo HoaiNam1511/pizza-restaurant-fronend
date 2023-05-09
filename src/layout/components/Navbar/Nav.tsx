@@ -1,15 +1,18 @@
 import classNames from "classnames/bind";
+import { NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
 import styles from "./Navbar.module.scss";
 import { navData } from "../../../data/";
-import { NavLink } from "react-router-dom";
 import { selectMenuIsOpen } from "../../../redux/selector";
-import { useSelector } from "react-redux";
+import { setMenuClose } from "../../../redux/slice/globalSlice";
 const cx = classNames.bind(styles);
 interface Nav {
     className: string;
 }
 
 function Nav({ className }: Nav) {
+    const dispatch = useDispatch();
     const menuIsOpen = useSelector(selectMenuIsOpen);
 
     return (
@@ -30,6 +33,7 @@ function Nav({ className }: Nav) {
                                     cx("link", { active: nav.isActive })
                                 }
                                 to={item.to}
+                                onClick={() => dispatch(setMenuClose())}
                             >
                                 {item.title}
                             </NavLink>

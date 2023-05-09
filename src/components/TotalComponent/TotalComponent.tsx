@@ -1,10 +1,11 @@
 import classNames from "classnames/bind";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+
 import styles from "./TotalComponent.module.scss";
 import { convertToUSD } from "../../custom";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
-import { useEffect, useState } from "react";
 import { selectCart } from "../../redux/selector";
-import { useSelector } from "react-redux";
 
 const cx = classNames.bind(styles);
 

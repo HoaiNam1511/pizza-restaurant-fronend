@@ -1,5 +1,6 @@
-import styles from "./Contact.module.scss";
 import classNames from "classnames/bind";
+
+import styles from "./Contact.module.scss";
 import * as staticData from "../../data";
 
 const cx = classNames.bind(styles);

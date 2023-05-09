@@ -1,6 +1,7 @@
+import { useState } from "react";
 import classNames from "classnames/bind";
+
 import styles from "./Dropdown.module.scss";
-import { useEffect, useState } from "react";
 import * as globalInterface from "../../types";
 
 const cx = classNames.bind(styles);

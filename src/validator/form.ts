@@ -1,8 +1,9 @@
+import { useDispatch } from "react-redux";
 import classNames from "classnames/bind";
 import styles from "../components/GlobalComponent/GlobalStyle.module.scss";
 import * as globalInterface from "../types";
 
-interface Role {
+interface Rule {
     selector: string;
     check: (value: string | number) => any;
 }
@@ -11,27 +12,77 @@ const cx = classNames.bind(styles);
 
 export function Validator(options: globalInterface.ValidateForm) {
     //Get form element
-    const formElement = document.querySelector(options.form);
+    const formElement: any = document.querySelector(options.form);
+
+    let selectorRole: any = {};
+
+    //Handle submit
+    const btnSubmitElement: any = document.querySelector(
+        options.btnSubmit || ""
+    );
+
+    if (btnSubmitElement) {
+        let isFormValid = true;
+        // btnSubmitElement.addEventListener("click", (event: any) => {
+        //     options.roles.every((rule: any) => {
+        //         const inputElement: any = formElement.querySelector(
+        //             rule.selector
+        //         );
+        //         let isValid = validate(inputElement, rule);
+        //         if (!isValid) {
+        //             isFormValid = false;
+        //             return false;
+        //         } else {
+        //             return true;
+        //         }
+        //     });
+
+        //     if (!isFormValid) {
+        //         alert(options.message.messageError);
+        //         event.stopPropagation();
+        //         event.preventDefault();
+        //     } else {
+        //         alert(options.message.messageSuccess);
+        //     }
+        // });
+    }
 
     if (formElement) {
-        options.roles.forEach((role: Role) => {
+        //Handle validate
+        options.roles.forEach((rule: Rule) => {
+            //Save element role
+            //Check if is array => push element to array
+            if (Array.isArray(selectorRole[rule.selector])) {
+                selectorRole[rule.selector].push(rule.check);
+            } else {
+                selectorRole[rule.selector] = [rule.check];
+            }
             //Element input
-            const inputElement: any = formElement.querySelector(role.selector);
+            const inputElement: any = formElement.querySelector(rule.selector);
             //Element label message error
             if (inputElement) {
                 //If mouse out input
                 inputElement.onblur = function () {
-                    validate(inputElement, role);
+                    validate(inputElement, rule);
                 };
             }
         });
     }
 
-    function validate(inputElement: any, role: Role) {
-        const errorMessage = role.check(inputElement.value);
+    function validate(inputElement: any, rule: Rule) {
+        let errorMessage;
         const warningElement = inputElement.parentElement.querySelector(
             options.elementWarning
         );
+
+        //Get array rule
+        const rules: any = selectorRole[rule.selector];
+
+        for (let i = 0; i < rules.length; i++) {
+            errorMessage = rules[i](inputElement.value);
+            if (errorMessage) break;
+        }
+
         if (errorMessage) {
             warningElement.innerText = errorMessage;
             warningElement.classList.add(cx("title-warning"));
@@ -41,6 +92,8 @@ export function Validator(options: globalInterface.ValidateForm) {
             warningElement.classList.remove(cx("title-warning"));
             inputElement.classList.remove(cx("input-warning"));
         }
+
+        return !errorMessage;
     }
 }
 

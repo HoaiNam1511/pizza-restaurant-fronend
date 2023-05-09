@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import classNames from "classnames/bind";
@@ -13,10 +12,9 @@ import SelectQuantity from "../../components/SelectQuantity/SelectQuantity";
 import * as globalInterface from "../../types";
 import * as staticData from "../../data";
 
-import { removeProductCart, updateCart } from "../../redux/slice/product";
+import { removeProductCart, updateCart } from "../../redux/slice/productSlice";
 import { convertToUSD } from "../../custom";
-import { setProductId } from "../../redux/slice/product";
-import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
+import { setProductId } from "../../redux/slice/productSlice";
 import { selectCart } from "../../redux/selector";
 const cx = classNames.bind(styles);
 

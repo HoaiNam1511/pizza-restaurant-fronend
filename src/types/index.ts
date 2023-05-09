@@ -36,11 +36,15 @@ export interface TotalProduct {
     tax: number;
     total: number;
 }
-
 export interface ValidateForm {
     form: string;
     elementWarning: string;
     roles: any;
+    btnSubmit?: string;
+    message: {
+        messageSuccess: string;
+        messageError: string;
+    };
 }
 
 export interface Booking {

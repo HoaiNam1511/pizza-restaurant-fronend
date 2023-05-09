@@ -1,6 +1,7 @@
-import classNames from "classnames/bind";
-import styles from "./Order.module.scss";
 import React, { useState, useEffect, useRef } from "react";
+import classNames from "classnames/bind";
+
+import styles from "./Order.module.scss";
 import * as globalServices from "../../services/globalServices";
 import { Validator } from "../../validator/form";
 
@@ -50,17 +51,21 @@ function Form({ className, onFormChange }: FormProps) {
         wards: [],
     });
 
-    Validator({
-        form: "#customer-info",
-        elementWarning: "#elementWarning",
-        roles: [
-            Validator.isName("#name"),
-            Validator.isEmail("#email"),
-            Validator.isPhone("#phone"),
-            Validator.isRequired("#address"),
-            Validator.isRequiredSelect("#addressSelect"),
-        ],
-    });
+    // Validator({
+    //     form: "#customer-info",
+    //     elementWarning: "#elementWarning",
+    //     roles: [
+    //         Validator.isRequired("#name"),
+    //         Validator.isEmail("#email"),
+    //         Validator.isRequired("#phone"),
+    //         Validator.isRequired("#address"),
+    //         Validator.isName("#name"),
+    //         Validator.isEmail("#email"),
+    //         Validator.isPhone("#phone"),
+    //         Validator.isRequired("#address"),
+    //         Validator.isRequiredSelect("#addressSelect"),
+    //     ],
+    // });
 
     const getAddressData = async () => {
         const resLocal = await globalServices.getAddress();
@@ -104,6 +109,8 @@ function Form({ className, onFormChange }: FormProps) {
                 <h2>Customer Information</h2>
             </div>
             <form
+                action=""
+                method="POST"
                 className={cx("row g-0", "form")}
                 id="customer-info"
             >

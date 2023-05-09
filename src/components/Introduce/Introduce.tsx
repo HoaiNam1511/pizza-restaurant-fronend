@@ -1,5 +1,6 @@
-import styles from "./Introduce.module.scss";
 import classNames from "classnames/bind";
+
+import styles from "./Introduce.module.scss";
 import { PizzaIcon } from "../../assets/icon/icon";
 import * as staticData from "../../data";
 

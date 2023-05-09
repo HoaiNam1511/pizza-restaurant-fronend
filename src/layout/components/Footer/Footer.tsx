@@ -1,8 +1,9 @@
 import classNames from "classnames/bind";
-import styles from "./Footer.module.scss";
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+
+import styles from "./Footer.module.scss";
 import { socialData } from "../../../data/index";
 
 const cx = classNames.bind(styles);

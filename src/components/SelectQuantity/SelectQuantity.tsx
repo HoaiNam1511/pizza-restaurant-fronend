@@ -1,8 +1,9 @@
 import classNames from "classnames/bind";
-import styles from "./SelectQuantity.module.scss";
-import { useEffect, useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import { useEffect, useState } from "react";
+
+import styles from "./SelectQuantity.module.scss";
 
 const cx = classNames.bind(styles);
 

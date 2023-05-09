@@ -1,6 +1,6 @@
 import classNames from "classnames/bind";
-import styles from "./MainLayout.module.scss";
 
+import styles from "./MainLayout.module.scss";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 
