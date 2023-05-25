@@ -1,0 +1,139 @@
+@import "../../scss/mixin";
+@import "../../components/GlobalComponent/GlobalStyle.module.scss";
+
+$success-color: #82ce34;
+$error-color: #fd3939;
+$black-color: #5c5c5c;
+.overlay {
+    @include modal-overlay;
+    transition: all 0.2s ease-in;
+    .popup-wrapper {
+        background-color: #fff;
+        min-height: 200px;
+        width: 330px;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        transform: scale(0);
+        transition: all 0.2s ease-in;
+
+        @include media-breakpoint-sm() {
+            width: 280px;
+        }
+
+        .notification-type {
+            position: relative;
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+        }
+
+        .notification-type.success {
+            background-color: $success-color;
+            &::before {
+                position: absolute;
+                content: "";
+                height: 33px;
+                width: 22px;
+                border: 3px solid #fff;
+                left: 32%;
+                top: 11%;
+                transform: rotate(45deg);
+                border-left: transparent;
+                border-top: transparent;
+            }
+        }
+
+        .notification-type.error {
+            background-color: $error-color;
+            @mixin line {
+                content: "";
+                position: absolute;
+                width: 2px;
+                height: 34px;
+                background-color: #fff;
+                top: 25%;
+            }
+            &::before {
+                @include line;
+                left: 47%;
+                transform: translateX(-50%);
+                transform: rotate(45deg);
+            }
+            &::after {
+                @include line;
+                left: 50%;
+                transform: translateX(-50%);
+                transform: rotate(-45deg);
+            }
+        }
+
+        .main-title {
+            padding: 15px 0px 0px;
+            text-transform: capitalize;
+            margin: 0;
+            color: $black-color;
+
+            @include media-breakpoint-sm() {
+                font-size: 1.7rem;
+            }
+        }
+
+        .title {
+            font-weight: 400;
+            font-size: 1.6rem;
+            padding: 10px 0px 25px;
+            color: $black-color;
+            margin: 0;
+            text-align: center;
+            max-width: 280px;
+            display: inline-block;
+            white-space: normal;
+            overflow-wrap: break-word;
+
+            @include media-breakpoint-sm() {
+                width: 240px;
+                font-size: 1.4rem;
+            }
+        }
+
+        .btn-close-custom {
+            height: 32px;
+            min-width: 90px;
+            padding: 0 10px;
+            border-radius: 4px;
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        .btn-close-custom.success {
+            background-color: $success-color;
+            border: 2px solid $success-color;
+            transition: all 0.1s linear;
+            &:hover {
+                background-color: transparent;
+                color: #5c5c5c;
+            }
+        }
+        .btn-close-custom.error {
+            background-color: $error-color;
+            border: 2px solid $error-color;
+            transition: all 0.1s linear;
+            &:hover {
+                background-color: transparent;
+                color: #5c5c5c;
+            }
+        }
+    }
+}
+
+.open {
+    opacity: 1;
+    visibility: visible;
+    .popup-wrapper {
+        transform: scale(1);
+    }
+}

@@ -9,32 +9,37 @@
     .btn-primary {
         height: 100%;
         width: 100%;
-        display: inline-block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         border-radius: 0;
         border: 1px solid $primary-color;
-        color: #000;
-        font-size: 1.4rem;
-        display: inline-block;
-        font-weight: 400;
-        text-align: center;
         white-space: nowrap;
         vertical-align: middle;
         border-radius: 2px;
-    }
 
-    .small {
-        font-size: 1.4rem;
-        font-weight: 400;
-    }
+        .title {
+            position: relative;
+            color: #000;
+            font-size: 1.4rem;
+            font-weight: 400;
+            text-align: center;
+        }
 
-    .medium {
-        font-size: 1.6rem;
-        font-weight: 500;
-    }
+        .small {
+            font-size: 1.4rem;
+            font-weight: 400;
+        }
 
-    .large {
-        font-size: 1.8rem;
-        font-weight: 700;
+        .medium {
+            font-size: 1.6rem;
+            font-weight: 500;
+        }
+
+        .large {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
     }
 
     .primary {
@@ -42,20 +47,44 @@
         &:hover {
             background-color: transparent;
             border: 1px solid $primary-color;
-            color: $primary-color;
+
+            .title {
+                color: $primary-color;
+            }
+        }
+        &:active {
+            background-color: transparent !important;
+            border: 1px solid $primary-color !important;
+
+            .title {
+                color: $primary-color !important;
+            }
         }
     }
 
     .outline {
         background-color: transparent;
+        &:active {
+            background-color: $primary-color !important;
+            border: 1px solid $primary-color !important;
+
+            .title {
+                color: #000 !important;
+            }
+        }
     }
 
     .white {
-        color: #fff;
         border: 1px solid #fff;
+        .title {
+            color: #fff;
+        }
+
         &:hover {
-            color: #000;
             background-color: $primary-color;
+            .title {
+                color: #000;
+            }
         }
     }
 }

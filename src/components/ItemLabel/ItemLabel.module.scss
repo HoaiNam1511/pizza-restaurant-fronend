@@ -3,15 +3,15 @@
 
 .block {
     margin: 10px 0px;
-    max-height: 120px;
-    overflow-y: auto;
+    height: 34px;
+    display: flex;
+    align-items: center;
 }
 
 .title-header {
     font-size: 1.7rem;
     color: #b7903c;
     text-transform: uppercase;
-    margin-bottom: 10px;
     @include media-breakpoint-sm() {
         font-size: 1.5rem;
     }
@@ -21,7 +21,10 @@
     color: #fff;
     font-weight: 400;
     font-size: 1.6rem;
-    margin-bottom: 22px;
+    overflow-y: auto;
+    max-height: 75px;
+    word-wrap: break-word;
+    text-transform: capitalize;
     @include media-breakpoint-sm() {
         font-size: 1.4rem;
     }

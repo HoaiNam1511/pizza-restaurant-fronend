@@ -36,7 +36,7 @@ function Card({ data, animationDisable = false, showButton = false }: Data) {
         animatedClassName: "animated",
     });
 
-    const handleProductClick = (data: interfaceGlobal.Product) => {
+    const handleProductClick = (data: interfaceGlobal.Product): void => {
         dispatch(setProductId(data.id));
         navigate(config.routes.detail);
     };
@@ -51,7 +51,7 @@ function Card({ data, animationDisable = false, showButton = false }: Data) {
         size: staticData.sizeData[0]?.value.toString(),
     };
 
-    const onBtnQuickViewClick = () => {
+    const onBtnQuickViewClick = (): void => {
         dispatch(setProductDetail(data));
         dispatch(setModalOpen());
     };
@@ -66,7 +66,7 @@ function Card({ data, animationDisable = false, showButton = false }: Data) {
                 )}
             >
                 <img
-                    src={process.env.REACT_APP_SERVER_URL_IMAGE + data.image}
+                    src={data.image}
                     alt=""
                 />
             </div>

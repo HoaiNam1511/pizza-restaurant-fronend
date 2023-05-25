@@ -6,19 +6,15 @@ import Introduce from "../../components/Introduce/Introduce";
 import HeaderSection from "../../components/HeaderSection/HeaderSection";
 import CardChef from "./CardChef";
 import CardInfo from "./CardInfo";
+import Banner from "../../components/Banner/Banner";
 import * as staticData from "../../data";
 
 const cx = classNames.bind(styles);
 function About() {
     return (
         <div className={cx("background")}>
+            <Banner title="About"></Banner>
             <div className={cx("container-fluid", "wrapper")}>
-                <div className={cx("slide-background")}>
-                    <div className={cx("overlay")}></div>
-                    <div className={cx("content")}>
-                        <h1>ABOUT US</h1>
-                    </div>
-                </div>
                 <Contact />
                 <Introduce />
                 <HeaderSection

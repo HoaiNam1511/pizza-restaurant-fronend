@@ -3,6 +3,8 @@ import classNames from "classnames/bind";
 
 import styles from "./Contact.module.scss";
 import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
+import Banner from "../../components/Banner/Banner";
+import { Validator } from "../../validator/form";
 
 interface Contact {
     name: string;
@@ -27,29 +29,26 @@ function Contact() {
         message: "",
     });
     const { name, email, subject, message } = contact;
-    // Validator({
-    //     form: "#customer-info",
-    //     elementWarning: "#elementWarning",
-    //     roles: [
-    //         Validator.isName("#name"),
-    //         Validator.isEmail("#email"),
-    //         Validator.isRequired("#subject"),
-    //     ],
-    // });
+    Validator({
+        form: "#customer-info",
+        elementWarning: "#elementWarning",
+        roles: [
+            Validator.isName("#name"),
+            Validator.isEmail("#email"),
+            Validator.isRequired("#subject"),
+        ],
+    });
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (
+        event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ): void => {
         setContact({ ...contact, [event.target.name]: event.target.value });
     };
 
     return (
         <div className={cx("background")}>
+            <Banner title="Contact"></Banner>
             <div className={cx("container-fluid", "wrapper")}>
-                <div className={cx("slide-background")}>
-                    <div className={cx("overlay")}></div>
-                    <div className={cx("content")}>
-                        <h1>CONTACT US</h1>
-                    </div>
-                </div>
                 <section className={cx("row g-0")}>
                     <div className={cx("col-12 col-sm-5", "left")}>
                         <div className={cx("header-title")}>
@@ -126,6 +125,7 @@ function Contact() {
                                     id={contactObj.message}
                                     value={message}
                                     placeholder="Message"
+                                    onChange={(e) => handleInputChange(e)}
                                 ></textarea>
                             </div>
                             <PrimaryButton className={cx("btn-submit")}>

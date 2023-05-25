@@ -26,16 +26,18 @@ interface UpdateCart {
 function Cart() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const carts = useSelector(selectCart);
-    const handleUpdateCart = ({ product, value }: UpdateCart) => {
+    const carts: globalInterface.ProductCart[] = useSelector(selectCart);
+    const handleUpdateCart = ({ product, value }: UpdateCart): void => {
         dispatch(updateCart({ ...product, quantity: value }));
     };
 
-    const handleDeleteProduct = (product: globalInterface.ProductCart) => {
+    const handleDeleteProduct = (
+        product: globalInterface.ProductCart
+    ): void => {
         dispatch(removeProductCart(product));
     };
 
-    const handleNavigateDetail = ({ id }: { id: number }) => {
+    const handleNavigateDetail = ({ id }: { id: number }): void => {
         dispatch(setProductId(id));
         navigate(config.routes.detail);
     };
@@ -55,8 +57,11 @@ function Cart() {
                             </tr>
                         </thead>
                         <tbody>
-                            {carts.map((product) => (
-                                <tr className={cx("row g-0")}>
+                            {carts.map((product, index) => (
+                                <tr
+                                    className={cx("row g-0")}
+                                    key={index}
+                                >
                                     <td className={cx("col-4")}>
                                         <img
                                             onClick={() =>
@@ -64,11 +69,7 @@ function Cart() {
                                                     id: product.id,
                                                 })
                                             }
-                                            src={
-                                                process.env
-                                                    .REACT_APP_SERVER_URL_IMAGE +
-                                                product.image
-                                            }
+                                            src={product.image}
                                             alt=""
                                         />
                                         <span

@@ -17,7 +17,7 @@ interface Total {
 }
 interface TotalComponentProps {
     titleBtn: string;
-    onClick: () => void;
+    onClick?: () => void;
     className?: string;
 }
 
@@ -33,18 +33,20 @@ function TotalComponent({ titleBtn, onClick, className }: TotalComponentProps) {
 
     const { shipping, tax, subtotal, total } = totalCart;
 
-    const handleTotal = () => {
+    const handleTotal = (): void => {
         let shipping: number = 0;
+
         if (carts.length > 0) {
             shipping = Math.random() * 7 + 2;
         } else {
             shipping = 0;
         }
+
         const subtotal: number = carts.reduce(
             (acc, cur) => acc + cur.price * cur.quantity,
             0
         );
-        const tax: number = (subtotal / 100) * 4;
+        const tax: number = (subtotal / 100) * 5;
         const total = shipping + subtotal + tax;
         setTotalCart({
             shipping: shipping,
@@ -65,10 +67,10 @@ function TotalComponent({ titleBtn, onClick, className }: TotalComponentProps) {
             </div>
             <div className={cx("item")}>
                 <span>Shipping:</span>
-                <span>{convertToUSD(shipping)}</span>
+                <span>Free</span>
             </div>
             <div className={cx("item")}>
-                <span>Tax:</span>
+                <span>Tax(5%):</span>
                 <span>{convertToUSD(tax)}</span>
             </div>
             <div className={cx("item")}>
@@ -80,6 +82,7 @@ function TotalComponent({ titleBtn, onClick, className }: TotalComponentProps) {
                     className={cx("btn-check-out")}
                     fontWeight="medium"
                     onClick={onClick}
+                    id="btnSubmit"
                 >
                     {titleBtn}
                 </PrimaryButton>

@@ -1,18 +1,20 @@
 @import "../../scss/mixin";
 @import "../../components/GlobalComponent/GlobalStyle.module.scss";
 
+$margin-item: 22px;
+
 @mixin title-header {
     font-size: 1.7rem;
     color: #b7903c;
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: $margin-item;
 }
 
 @mixin title {
     color: #fff;
     font-weight: 400;
     font-size: 1.6rem;
-    margin-bottom: 22px;
+    margin-bottom: $margin-item;
 }
 
 .background {
@@ -59,7 +61,7 @@
         .price {
             color: $text-price-color;
             font-size: 2.4rem;
-            margin-bottom: 8px;
+            margin-bottom: $margin-item;
             @include media-breakpoint-sm() {
                 font-size: 4.6vw;
             }
@@ -181,14 +183,16 @@
         }
     }
 
-    .list-header {
-        font-size: 2.6rem;
-        color: #b7903c;
-        text-transform: uppercase;
-        margin-bottom: 30px;
+    .list {
+        .list-header {
+            font-size: 2.6rem;
+            color: #b7903c;
+            text-transform: uppercase;
+            margin-bottom: 30px;
 
-        @include media-breakpoint-sm() {
-            font-size: 6vw;
+            @include media-breakpoint-sm() {
+                font-size: 6vw;
+            }
         }
     }
 }

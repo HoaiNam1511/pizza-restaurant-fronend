@@ -6,7 +6,7 @@ import * as staticData from "../../data";
 const cx = classNames.bind(styles);
 function Contact() {
     return (
-        <div className={cx("container-fluid", "contact-wrapper")}>
+        <div className={cx("container-fluid g-0", "contact-wrapper")}>
             <div className={cx("row g-0", "contact")}>
                 <div className={cx("col-12 col-md-8", "info")}>
                     <div className={cx("row g-0")}>

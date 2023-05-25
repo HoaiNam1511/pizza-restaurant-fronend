@@ -1,13 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import classNames from "classnames/bind";
+
+import * as staticData from "../../data";
+import * as globalInterface from "../../types";
+import * as services from "../../services/index";
 
 import styles from "./Booking.module.scss";
 import image from "../../assets/images/restaurant-3.jpeg";
-import * as staticData from "../../data";
 import { Validator } from "../../validator/form";
-import * as globalInterface from "../../types";
 import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
-import * as services from "../../services/index";
+import { currentTime, currentDate } from "../../custom";
+import { useDispatch } from "react-redux";
+import { setPopupNotification } from "../../redux/slice/globalSlice";
+import {
+    setLoadingRequest,
+    setLoadingResponse,
+} from "../../redux/slice/globalSlice";
 
 const cx = classNames.bind(styles);
 
@@ -20,50 +28,105 @@ const bookingObj = {
     partySize: "partySize",
 };
 
-function Booking() {
-    Validator({
-        form: "#form-booking",
-        elementWarning: "#elementWarning",
-        roles: [
-            Validator.isRequired("#customerName"),
-            Validator.isRequired("#email"),
-            Validator.isRequired("#phone"),
-            Validator.isName("#customerName"),
-            Validator.isEmail("#email"),
-            Validator.isPhone("#phone"),
-        ],
-        btnSubmit: "#btnSubmit",
-        message: {
-            messageSuccess: "Booking success",
-            messageError: "Cannot booking",
-        },
-    });
+const bookingInit = {
+    customerName: "",
+    email: "",
+    phone: "",
+    date: currentDate(),
+    time: currentTime(),
+    partySize: 1,
+};
 
-    const [booking, setBooking] = useState<globalInterface.Booking>({
-        customerName: "",
-        email: "",
-        phone: "",
-        date: new Date().toISOString().substr(0, 10),
-        time: new Date().toLocaleTimeString([], {
-            hour: "2-digit",
-            minute: "2-digit",
-        }),
-        partySize: 1,
-    });
+function Booking() {
+    const dispatch = useDispatch();
+    const [booking, setBooking] =
+        useState<globalInterface.Booking>(bookingInit);
+
+    const [bookingIsSubmit, setBookingIsSubmit] = useState<boolean>(false);
 
     const { customerName, email, phone, date, time, partySize } = booking;
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ): void => {
         setBooking({ ...booking, [event.target.name]: event.target.value });
     };
 
-    const onPartySizeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const onPartySizeChange = (
+        event: React.ChangeEvent<HTMLSelectElement>
+    ): void => {
         setBooking({ ...booking, [event.target.name]: event.target.value });
     };
 
-    const handleSubmitBooking = async () => {
-        await services.createBooking(booking);
+    const handleSubmitBooking = async (): Promise<void> => {
+        dispatch(setLoadingRequest());
+        try {
+            await services.createBooking(booking);
+            dispatch(setLoadingResponse());
+            setBookingIsSubmit(false);
+            setBooking(bookingInit);
+            dispatch(
+                setPopupNotification({
+                    action: "success",
+                    isOpen: true,
+                    mainTitle: "Booking success",
+                    title: "Thank you for booking, please check your email and confirm",
+                })
+            );
+        } catch (err) {
+            console.log(err);
+        }
     };
+
+    useEffect(() => {
+        Validator({
+            form: "#form-booking",
+            elementWarning: "#elementWarning",
+            roles: [
+                Validator.isRequired("#customerName"),
+                Validator.isRequired("#email"),
+                Validator.isRequired("#phone"),
+                Validator.isName("#customerName"),
+                Validator.isEmail("#email"),
+                Validator.isPhone("#phone"),
+            ],
+            btnSubmit: "#btnSubmit",
+            checkSubmit: function (value: boolean): void {
+                if (value) {
+                    setBookingIsSubmit(value);
+                }
+            },
+        });
+    }, []);
+
+    useEffect(() => {
+        if (bookingIsSubmit) {
+            if (date < currentDate()) {
+                dispatch(
+                    setPopupNotification({
+                        action: "error",
+                        isOpen: true,
+                        mainTitle: "Date error",
+                        title: "The booking date needs to be at current or more than",
+                    })
+                );
+                setBookingIsSubmit(false);
+            } else if (time < currentTime() && date === currentDate()) {
+                dispatch(
+                    setPopupNotification({
+                        action: "error",
+                        isOpen: true,
+                        mainTitle: "Time error",
+                        title: "The booking time needs to be at least one hour in advance",
+                    })
+                );
+
+                setBookingIsSubmit(false);
+            } else {
+                handleSubmitBooking();
+            }
+        }
+    }, [bookingIsSubmit]);
 
     return (
         <div className={cx("background")}>
@@ -157,7 +220,9 @@ function Booking() {
                             <div
                                 className={cx("col-12 col-sm-6", "form-group")}
                             >
+                                <label htmlFor="time"></label>
                                 <input
+                                    id="time"
                                     value={time}
                                     name={bookingObj.time}
                                     type="time"
@@ -167,8 +232,8 @@ function Booking() {
                             </div>
                             <PrimaryButton
                                 className={cx("btn-booking")}
-                                onClick={handleSubmitBooking}
                                 id="btnSubmit"
+                                // onClick={handleSubmitBooking}
                             >
                                 Booking
                             </PrimaryButton>

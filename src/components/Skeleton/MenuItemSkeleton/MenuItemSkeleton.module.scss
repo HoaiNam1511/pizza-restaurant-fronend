@@ -1,0 +1,22 @@
+.item-wrapper {
+    display: flex;
+    width: 100%;
+    margin-bottom: 30px;
+    .item-1 {
+        width: 60px;
+        height: 60px;
+    }
+
+    .item-2 {
+        padding: 0 10px;
+        flex: 1;
+        .item-2_block-1 {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .item-2_block-2 {
+        }
+    }
+}

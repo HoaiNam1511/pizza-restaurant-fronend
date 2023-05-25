@@ -1,0 +1,79 @@
+@import "../../../scss/mixin";
+@import "../../../components/GlobalComponent/GlobalStyle.module.scss";
+
+.card-wrapper {
+    width: 100%;
+    position: relative;
+    margin-bottom: 80px;
+
+    .card-image {
+        position: relative;
+        padding: 0 40px;
+        width: 100%;
+        z-index: 10;
+
+        img {
+            position: relative;
+            width: 100%;
+            z-index: 10;
+            visibility: visible;
+            opacity: 0;
+        }
+
+        @include media-breakpoint-md() {
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+        }
+
+        @include media-breakpoint-lg() {
+            &:hover {
+                &::before {
+                    opacity: 0;
+                    visibility: hidden;
+                }
+            }
+        }
+    }
+
+    .card-name {
+        padding: 0px 40px;
+        margin: 25px 0 10px;
+    }
+    .card-price {
+        padding: 0 40px;
+        margin: 10px 0 17px;
+    }
+
+    .buttons {
+        .button {
+            height: 47px;
+            margin: 0 3px;
+            transform: translateY(70px);
+            transition: all 0.3s ease-in-out;
+            opacity: 0;
+            visibility: hidden;
+            @include media-breakpoint-sm() {
+                height: 42px;
+            }
+        }
+
+        .button + .button {
+            transition-delay: 0.05s;
+        }
+
+        @include media-breakpoint-lg() {
+            display: none;
+        }
+    }
+
+    .show-button {
+        display: none;
+    }
+
+    .card-name,
+    .card-price,
+    .buttons {
+        text-align: center;
+    }
+}

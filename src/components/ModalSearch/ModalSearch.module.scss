@@ -1,0 +1,130 @@
+@import "../../scss/mixin";
+@import "../../components/GlobalComponent/GlobalStyle.module.scss";
+
+$text-color: #afadad;
+
+@mixin icon {
+    font-size: 2.6rem;
+}
+
+.modal {
+    @include modal-overlay;
+    align-items: start;
+    backdrop-filter: blur(2.6px);
+    transition: all 0.2s ease;
+    .wrapper {
+        position: absolute;
+        z-index: 10;
+        background-color: #fff;
+        width: 500px;
+        border-radius: 4px;
+        overflow: hidden;
+        margin-top: 80px;
+        left: 0;
+        right: 0;
+
+        @include media-breakpoint-md() {
+            margin-top: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 0px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+            padding: 20px 13px;
+            width: 100%;
+            .search {
+                flex: 1;
+                display: flex;
+                .search-btn {
+                    width: 40px;
+                    border: none;
+                    background-color: transparent;
+
+                    svg {
+                        @include icon;
+                    }
+                }
+                .search-input {
+                    border: none;
+                    outline: none;
+                    font-size: 1.8rem;
+                    font-weight: 300;
+                    padding: 0 10px;
+                    flex: 1;
+
+                    @include media-breakpoint-sm() {
+                        padding: 0 15px;
+                    }
+                }
+            }
+
+            .close-btn {
+                border: none;
+                background-color: transparent;
+
+                svg {
+                    @include icon;
+                }
+            }
+        }
+
+        .dropdown {
+            height: 460px;
+            padding: 10px 13px;
+            overflow-y: scroll;
+
+            @include media-breakpoint-md() {
+                height: 100%;
+            }
+
+            .dropdown-title {
+                font-size: 1.4rem;
+            }
+
+            .list {
+                list-style: none;
+                padding: 0;
+                .item {
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+                    .card {
+                        height: 60px;
+                    }
+                }
+            }
+
+            .not-found-container {
+                padding: 30px 10px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                img {
+                    width: 40%;
+                    margin-bottom: 10px;
+                }
+
+                h2,
+                h3 {
+                    text-align: center;
+                    color: $text-color;
+                }
+
+                h3 {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+}
+
+.open {
+    opacity: 1;
+    visibility: visible;
+
+    .wrapper {
+        transform: translateY(0);
+    }
+}

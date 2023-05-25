@@ -9,7 +9,7 @@ import PrimaryButton from "../PrimaryButton/PrimaryButton";
 const cx = classNames.bind(styles);
 function Carousel() {
     const refTimeSlide = useRef<NodeJS.Timeout>();
-    const dotsArr = [0, 1, 2];
+    const dotsArr: number[] = [0, 1, 2];
     const [active, setActive] = useState<number>(0);
 
     useEffect(() => {

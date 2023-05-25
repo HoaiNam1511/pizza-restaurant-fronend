@@ -24,6 +24,7 @@ function Dropdown({ className, onChange, data = [], name }: Dropdown) {
     return (
         <div className={cx(className, "dropdown-wrapper")}>
             <select
+                defaultValue={data[0].value}
                 onChange={(e) => handleDropdownChange(e)}
                 name="dropdown"
                 id="dropdown"

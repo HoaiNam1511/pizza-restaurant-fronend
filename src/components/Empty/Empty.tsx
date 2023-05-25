@@ -13,7 +13,7 @@ interface EmptyProps {
 
 function Empty({ headerTitle = "Header title", title = "title" }: EmptyProps) {
     const navigate = useNavigate();
-    const backProductClick = () => {
+    const backProductClick = (): void => {
         navigate(config.routes.product);
     };
 

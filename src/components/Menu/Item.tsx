@@ -15,9 +15,7 @@ function Item({ className, data }: Item) {
             <div className={cx("menu-item")}>
                 <div className={cx("item-1")}>
                     <img
-                        src={
-                            process.env.REACT_APP_SERVER_URL_IMAGE + data.image
-                        }
+                        src={data.image}
                         alt=""
                     />
                 </div>

@@ -7,8 +7,14 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./Navbar.module.scss";
 import { navData } from "../../../data/";
 import { DeliveryIcon, SearchIcon } from "../../../assets/icon/icon";
-import { setMenuClose, setMenuOpen } from "../../../redux/slice/globalSlice";
+import {
+    setMenuClose,
+    setMenuOpen,
+    setSearchOpen,
+} from "../../../redux/slice/globalSlice";
 import { selectCart, selectMenuIsOpen } from "../../../redux/selector";
+import * as globalInterface from "../../../types";
+
 const cx = classNames.bind(styles);
 interface Search {
     className: string;
@@ -16,10 +22,9 @@ interface Search {
 
 function Search({ className }: Search) {
     const dispatch = useDispatch();
-    const cart = useSelector(selectCart);
+    const cart: globalInterface.ProductCart[] = useSelector(selectCart);
     const [menuIsOpen, setMenuIsOpenState] = useState<boolean>(false);
-    const selectMenuOpen = useSelector(selectMenuIsOpen);
-
+    const selectMenuOpen: boolean = useSelector(selectMenuIsOpen);
     const handleMenuIsOpen = (value: boolean): void => {
         if (value) {
             dispatch(setMenuOpen());
@@ -36,14 +41,16 @@ function Search({ className }: Search) {
     return (
         <div className={cx(className)}>
             <div className={cx("row g-0", "nav-search-desktop")}>
-                <div className={cx("col-8", "search-container")}>
+                <div
+                    className={cx("col-7", "search-container")}
+                    onClick={() => dispatch(setSearchOpen())}
+                >
                     <SearchOutlinedIcon className={cx("search")} />
-                    <input type="text" />
                 </div>
 
                 <NavLink
                     className={(nav) =>
-                        cx("col-4", "link", { active: nav.isActive })
+                        cx("col-5", "link", { active: nav.isActive })
                     }
                     to={navData[navData.length - 1].to}
                 >
@@ -52,18 +59,23 @@ function Search({ className }: Search) {
                     {`(${cart?.length})`}
                 </NavLink>
             </div>
+
             <div className={cx("nav-search-mobile")}>
                 <ul className={cx("search-mobile_container")}>
-                    <li className={cx("nav-item")}>
+                    <li
+                        className={cx("nav-item")}
+                        onClick={() => dispatch(setSearchOpen())}
+                    >
                         <SearchIcon className={cx("nav-icon", "icon-mb")} />
                     </li>
-                    <NavLink to={navData[navData.length - 1].to}>
-                        <li className={cx("nav-item")}>
+
+                    <li className={cx("nav-item")}>
+                        <NavLink to={navData[navData.length - 1].to}>
                             <DeliveryIcon
                                 className={cx("nav-icon", "icon-mb")}
                             />
-                        </li>
-                    </NavLink>
+                        </NavLink>
+                    </li>
 
                     <li
                         className={cx("menu", "nav-item")}

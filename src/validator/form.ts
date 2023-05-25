@@ -9,45 +9,35 @@ interface Rule {
 }
 
 const cx = classNames.bind(styles);
-
 export function Validator(options: globalInterface.ValidateForm) {
     //Get form element
     const formElement: any = document.querySelector(options.form);
 
     let selectorRole: any = {};
 
-    //Handle submit
-    const btnSubmitElement: any = document.querySelector(
-        options.btnSubmit || ""
-    );
-
-    if (btnSubmitElement) {
-        let isFormValid = true;
-        // btnSubmitElement.addEventListener("click", (event: any) => {
-        //     options.roles.every((rule: any) => {
-        //         const inputElement: any = formElement.querySelector(
-        //             rule.selector
-        //         );
-        //         let isValid = validate(inputElement, rule);
-        //         if (!isValid) {
-        //             isFormValid = false;
-        //             return false;
-        //         } else {
-        //             return true;
-        //         }
-        //     });
-
-        //     if (!isFormValid) {
-        //         alert(options.message.messageError);
-        //         event.stopPropagation();
-        //         event.preventDefault();
-        //     } else {
-        //         alert(options.message.messageSuccess);
-        //     }
-        // });
-    }
-
     if (formElement) {
+        //Handle submit
+        const btnSubmitElement: any = document.querySelector(
+            options.btnSubmit || ""
+        );
+
+        if (btnSubmitElement) {
+            btnSubmitElement.addEventListener("click", (event: any) => {
+                let isFormValid = true;
+                options.roles.forEach((rule: any) => {
+                    const inputElement: any = formElement.querySelector(
+                        rule.selector
+                    );
+                    let isValid = validate(inputElement, rule);
+                    if (!isValid) {
+                        isFormValid = false;
+                    }
+                });
+                if (options.checkSubmit) {
+                    options.checkSubmit(isFormValid);
+                }
+            });
+        }
         //Handle validate
         options.roles.forEach((rule: Rule) => {
             //Save element role

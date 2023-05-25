@@ -18,11 +18,15 @@ export interface Product {
     material?: string;
     description?: string;
     image: string;
-    category?: Category[];
+    categories?: Category[];
 }
 export interface Select {
     title: string;
     value: string | number;
+}
+
+export interface SelectSizePrice extends Select {
+    price: number;
 }
 
 export interface ProductCart extends Product {
@@ -41,10 +45,7 @@ export interface ValidateForm {
     elementWarning: string;
     roles: any;
     btnSubmit?: string;
-    message: {
-        messageSuccess: string;
-        messageError: string;
-    };
+    checkSubmit?: (value: boolean) => void;
 }
 
 export interface Booking {
@@ -75,4 +76,11 @@ export interface Category {
     id: number;
     name: string;
     image: string;
+}
+
+export interface PopupNotification {
+    action: string;
+    mainTitle: string;
+    title: string;
+    isOpen: boolean;
 }

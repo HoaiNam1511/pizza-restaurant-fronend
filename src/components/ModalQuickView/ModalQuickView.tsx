@@ -1,6 +1,9 @@
 import classNames from "classnames/bind";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import CloseIcon from "@mui/icons-material/Close";
+
+import * as globalInterface from "../../types";
 
 import styles from "./ModalQuickView.module.scss";
 import ItemMenu from "../ItemMenu/ItemMenu";
@@ -11,10 +14,19 @@ const cx = classNames.bind(styles);
 
 function ModalQuickView() {
     const dispatch = useDispatch();
-    const productDetail = useSelector(selectProductDetail);
-    const modalOpen = useSelector(selectModalOpen);
+    const productDetail: globalInterface.Product | null =
+        useSelector(selectProductDetail);
+    const modalOpen: boolean = useSelector(selectModalOpen);
 
-    const isModalClose = () => {
+    useEffect(() => {
+        if (modalOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
+    }, [modalOpen]);
+
+    const isModalClose = (): void => {
         dispatch(setModalClose());
     };
 
@@ -25,10 +37,7 @@ function ModalQuickView() {
                     <div className={cx("col-12 col-lg-6", "left")}>
                         {productDetail?.image && (
                             <img
-                                src={
-                                    process.env.REACT_APP_SERVER_URL_IMAGE +
-                                    productDetail?.image
-                                }
+                                src={productDetail?.image}
                                 alt=""
                             />
                         )}
@@ -71,12 +80,14 @@ function ModalQuickView() {
                                     Category:&nbsp;
                                 </span>
 
-                                {productDetail?.category?.map((item, index) => (
-                                    <span
-                                        key={index}
-                                        className={cx("title")}
-                                    >{`${item.name}, `}</span>
-                                ))}
+                                {productDetail?.categories?.map(
+                                    (item, index) => (
+                                        <span
+                                            key={index}
+                                            className={cx("title")}
+                                        >{`${item.name}, `}</span>
+                                    )
+                                )}
                             </div>
 
                             <div className={cx("block")}>

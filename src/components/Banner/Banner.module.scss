@@ -1,0 +1,30 @@
+@import "../../scss/mixin";
+@import "../../components/GlobalComponent/GlobalStyle.module.scss";
+
+.banner-wrapper {
+    .banner {
+        @include slide-background;
+        z-index: 0;
+        .overlay {
+            @include overlay-slide-background;
+            z-index: 0;
+        }
+
+        .content {
+            @include slide-content;
+            h1 {
+                z-index: 100;
+                color: $text-light-color;
+                font-size: 4rem;
+                text-transform: uppercase;
+                @include media-breakpoint-md() {
+                    font-size: 3rem;
+                }
+
+                @include media-breakpoint-sm() {
+                    font-size: 2.6rem;
+                }
+            }
+        }
+    }
+}

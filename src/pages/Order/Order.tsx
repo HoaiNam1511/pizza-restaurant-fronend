@@ -1,15 +1,23 @@
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import classNames from "classnames/bind";
+
+import * as globalInterface from "../../types";
+import * as orderServices from "../../services/orderServices";
+
 import styles from "./Order.module.scss";
 import Form from "./Form";
 import ItemProductCheckout from "../../components/ItemProductCheckout/ItemProductCheckout";
 import TotalComponent from "../../components/TotalComponent/TotalComponent";
 import Checkbox from "../../components/Checkbox/Checkbox";
-import { useState } from "react";
-import { useSelector } from "react-redux";
 import { selectCart } from "../../redux/selector";
-import * as globalInterface from "../../types";
-import * as orderServices from "../../services/orderServices";
 import { InformationCustomer } from "./Form";
+import {
+    setLoadingRequest,
+    setLoadingResponse,
+    setPopupNotification,
+} from "../../redux/slice/globalSlice";
+import { useDispatch } from "react-redux";
 
 const cx = classNames.bind(styles);
 
@@ -30,7 +38,9 @@ const payment = {
 };
 
 function Order() {
+    const dispatch = useDispatch();
     const carts = useSelector(selectCart);
+    const [clearForm, setClearForm] = useState<boolean>(false);
     const [order, setOrder] = useState<globalInterface.InformationOrder>({
         paymentMethod: payment.crash,
         products: carts.map((product) => ({
@@ -44,7 +54,9 @@ function Order() {
         phone: "",
     });
 
-    const handleOrderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleOrderChange = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ): void => {
         setOrder({ ...order, [event.target.name]: event.target.value });
     };
 
@@ -52,12 +64,27 @@ function Order() {
         setOrder({ ...order, ...info });
     };
 
-    const onSubmitOrder = async () => {
+    const onSubmitOrder = async (): Promise<void> => {
+        dispatch(setLoadingRequest());
         try {
             await orderServices.createOrder(order);
+            setClearForm((pre) => !pre);
+            dispatch(setLoadingResponse());
+            dispatch(
+                setPopupNotification({
+                    action: "success",
+                    isOpen: true,
+                    mainTitle: "Booking success",
+                    title: "Thank you for booking, please check your email and confirm",
+                })
+            );
         } catch (err) {
             console.log(err);
         }
+    };
+
+    const dataFunction = (value: string): void => {
+        setOrder({ ...order, address: value });
     };
 
     return (
@@ -65,8 +92,11 @@ function Order() {
             <div className={cx("container g-0", "wrapper")}>
                 <div className={cx("row g-0")}>
                     <Form
+                        onSubmit={onSubmitOrder}
+                        childData={(v) => dataFunction(v)}
                         className={cx("col-12 col-lg-7", "left")}
                         onFormChange={(info) => handleInfoChange(info)}
+                        clearForm={clearForm}
                     />
                     <div className={cx("col-12 col-lg-5", "right")}>
                         <div className={cx("header-title")}>
@@ -163,7 +193,6 @@ function Order() {
                         <div>
                             <TotalComponent
                                 titleBtn="Order"
-                                onClick={onSubmitOrder}
                                 className={cx("order-total")}
                             ></TotalComponent>
                         </div>

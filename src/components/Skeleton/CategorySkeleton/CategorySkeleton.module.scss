@@ -1,0 +1,33 @@
+@import "../../../scss/mixin";
+@import "../../../components/GlobalComponent/GlobalStyle.module.scss";
+
+.item-wrapper {
+    display: flex;
+    align-items: center;
+
+    .item {
+        display: inline-block;
+    }
+
+    .image-skeleton {
+        margin: 0;
+        width: 42px;
+        height: 42px;
+        @include media-breakpoint-xl() {
+            width: 32px;
+        }
+
+        @include media-breakpoint-lg() {
+            width: 40px;
+        }
+        @include media-breakpoint-sm() {
+            width: 8vw;
+        }
+    }
+
+    .title-skeleton {
+        height: 42px;
+        width: 70px;
+        margin-left: 10px;
+    }
+}

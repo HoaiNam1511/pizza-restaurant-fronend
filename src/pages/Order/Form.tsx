@@ -27,47 +27,44 @@ interface Address {
 
 interface FormProps {
     className: string;
+    childData: (value: any) => void;
     onFormChange: (data: InformationCustomer) => void;
+    onSubmit: () => void;
+    clearForm: boolean;
 }
 
-function Form({ className, onFormChange }: FormProps) {
-    const initOrder = {
-        name: "",
-        email: "",
-        address: "",
-        phone: "",
-    };
+const initOrder = {
+    name: "",
+    email: "",
+    address: "",
+    phone: "",
+};
+
+const initAddress = {
+    location: "",
+    districts: "",
+    wards: "",
+};
+
+function Form({
+    className,
+    onFormChange,
+    childData,
+    onSubmit,
+    clearForm,
+}: FormProps) {
     const refInput = useRef<HTMLInputElement>(null);
     const [info, setInfo] = useState<InformationCustomer>(initOrder);
+    const [orderSubmit, setOrderSubmit] = useState<boolean>(false);
     const { name, email, address, phone } = info;
-    const [addressDetail, setAddressDetail] = useState<Address>({
-        location: "",
-        districts: "",
-        wards: "",
-    });
+    const [addressDetail, setAddressDetail] = useState<Address>(initAddress);
 
     const [addressGroup, setAddressGroup] = useState<AddressGroup>({
         districts: [],
         wards: [],
     });
 
-    // Validator({
-    //     form: "#customer-info",
-    //     elementWarning: "#elementWarning",
-    //     roles: [
-    //         Validator.isRequired("#name"),
-    //         Validator.isEmail("#email"),
-    //         Validator.isRequired("#phone"),
-    //         Validator.isRequired("#address"),
-    //         Validator.isName("#name"),
-    //         Validator.isEmail("#email"),
-    //         Validator.isPhone("#phone"),
-    //         Validator.isRequired("#address"),
-    //         Validator.isRequiredSelect("#addressSelect"),
-    //     ],
-    // });
-
-    const getAddressData = async () => {
+    const getAddressData = async (): Promise<void> => {
         const resLocal = await globalServices.getAddress();
         setAddressGroup((prevLocation) => ({
             ...prevLocation,
@@ -75,29 +72,79 @@ function Form({ className, onFormChange }: FormProps) {
         }));
     };
 
-    const onSelectAddressChange = (
-        event: React.ChangeEvent<HTMLSelectElement>
+    const onAddressChange = (
+        event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
     ) => {
-        const aria: string = event.target.name;
-        const filterLocal = addressGroup[aria as keyof AddressGroup]?.find(
-            (local: any) => local.name === event.target.value
-        );
+        if (event.target.name !== "location") {
+            const aria: string = event.target.name;
+            const filterLocal = addressGroup[aria as keyof AddressGroup]?.find(
+                (local: any) => local.name === event.target.value
+            );
 
-        // Set districts
-        if (aria === "districts") {
-            setAddressGroup((prevLocation: any) => ({
-                ...prevLocation,
-                wards: filterLocal.wards,
-            }));
+            // Set districts
+            if (aria === "districts") {
+                setAddressGroup((prevLocation: any) => ({
+                    ...prevLocation,
+                    wards: filterLocal.wards,
+                }));
+            }
+
+            setAddressDetail({ ...addressDetail, [aria]: event.target.value });
+        } else {
+            setAddressDetail({
+                ...addressDetail,
+                location: event.target.value,
+            });
         }
-
-        setAddressDetail({ ...addressDetail, [aria]: event.target.value });
     };
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInfo({ ...info, [event.target.name]: event.target.value });
         onFormChange({ ...info, [event.target.name]: event.target.value });
     };
+
+    useEffect(() => {
+        childData(
+            `${addressDetail.location} - ${addressDetail.wards} - ${addressDetail.districts}`
+        );
+    }, [addressDetail]);
+
+    useEffect(() => {
+        Validator({
+            form: "#customer-info",
+            elementWarning: "#elementWarning",
+            roles: [
+                Validator.isRequired("#name"),
+                Validator.isRequired("#phone"),
+                Validator.isRequired("#location"),
+                Validator.isRequired("#email"),
+                Validator.isName("#name"),
+                Validator.isEmail("#email"),
+                Validator.isPhone("#phone"),
+                Validator.isRequired("#location"),
+                Validator.isRequiredSelect("#addressSelect"),
+                Validator.isRequiredSelect("#districts"),
+            ],
+            btnSubmit: "#btnSubmit",
+            checkSubmit: function (value: boolean): void {
+                if (value) {
+                    setOrderSubmit(value);
+                }
+            },
+        });
+    }, []);
+
+    useEffect(() => {
+        if (orderSubmit) {
+            onSubmit();
+        }
+    }, [orderSubmit]);
+
+    useEffect(() => {
+        setInfo(initOrder);
+        setAddressDetail(initAddress);
+        setOrderSubmit(false);
+    }, [clearForm]);
 
     useEffect(() => {
         getAddressData();
@@ -161,12 +208,12 @@ function Form({ className, onFormChange }: FormProps) {
 
                 <div className={cx("col-12 col-sm-6", "form-group")}>
                     <input
-                        id="address"
-                        name="address"
-                        value={address}
-                        placeholder="Address"
+                        id="location"
+                        name="location"
+                        value={addressDetail.location}
+                        placeholder="Location"
                         type="text"
-                        onChange={(e) => handleInputChange(e)}
+                        onChange={(e) => onAddressChange(e)}
                     />
                     <span
                         ref={refInput}
@@ -176,8 +223,9 @@ function Form({ className, onFormChange }: FormProps) {
 
                 <div className={cx("col-12 col-sm-6", "form-group")}>
                     <select
+                        id="districts"
                         name="districts"
-                        onChange={(e) => onSelectAddressChange(e)}
+                        onChange={(e) => onAddressChange(e)}
                     >
                         <option value="">Quận/ Huyện</option>
                         {addressGroup.districts.map((district, index) => (
@@ -189,13 +237,14 @@ function Form({ className, onFormChange }: FormProps) {
                             </option>
                         ))}
                     </select>
+                    <span id="elementWarning"></span>
                 </div>
 
                 <div className={cx("col-12 col-sm-6", "form-group")}>
                     <select
                         id="addressSelect"
                         name="wards"
-                        onChange={(e) => onSelectAddressChange(e)}
+                        onChange={(e) => onAddressChange(e)}
                     >
                         <option value="">Phường/ Xã</option>
                         {addressGroup.wards?.map((ward, index) => (

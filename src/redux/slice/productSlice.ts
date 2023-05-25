@@ -52,7 +52,7 @@ const product = createSlice({
                     }
                 });
             } else {
-                state.cartPizza.push();
+                state.cartPizza.push(actions.payload);
             }
         },
 

@@ -6,31 +6,6 @@
     background-size: cover;
 
     .wrapper {
-        .slide-background {
-            @include slide-background;
-            z-index: 0;
-            .overlay {
-                @include overlay-slide-background;
-                z-index: 0;
-            }
-
-            .content {
-                @include slide-content;
-                h1 {
-                    z-index: 100;
-                    color: $text-light-color;
-                    font-size: 4rem;
-
-                    @include media-breakpoint-md() {
-                        font-size: 3.5rem;
-                    }
-                    @include media-breakpoint-sm() {
-                        font-size: 3rem;
-                    }
-                }
-            }
-        }
-
         section {
             max-width: 1140px;
             position: relative;

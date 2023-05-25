@@ -1,6 +1,10 @@
+import { memo } from "react";
 import classNames from "classnames/bind";
 
 import styles from "./PrimaryButton.module.scss";
+import Loading from "../Loading/Loading";
+import { useSelector } from "react-redux";
+import * as selectorState from "../../redux/selector";
 
 const cx = classNames.bind(styles);
 
@@ -22,6 +26,7 @@ function PrimaryButton({
     onClick,
     id = "button",
 }: PrimaryButton) {
+    const selectLoading: boolean = useSelector(selectorState.selectLoading);
     return (
         <div className={cx("wrapper-btn", className)}>
             <button
@@ -32,17 +37,19 @@ function PrimaryButton({
                     "btn-primary",
                     "primary",
                     color,
+
                     {
                         outline: outline,
-                    },
-                    fontWeight
+                    }
                 )}
                 onClick={onClick}
             >
-                {children}
+                <span className={cx("title", fontWeight)}>
+                    {children} {selectLoading && <Loading />}
+                </span>
             </button>
         </div>
     );
 }
 
-export default PrimaryButton;
+export default memo(PrimaryButton);

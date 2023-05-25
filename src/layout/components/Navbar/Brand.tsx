@@ -1,5 +1,5 @@
 import classNames from "classnames/bind";
-import { useNavigate } from "react-router-dom";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 
 import styles from "./Navbar.module.scss";
 import config from "../../../config";
@@ -10,13 +10,13 @@ interface Brand {
 }
 
 function Brand({ className }: Brand) {
-    const navigate = useNavigate();
+    const navigate: NavigateFunction = useNavigate();
     return (
         <div
             onClick={() => navigate(config.routes.home)}
             className={cx(className, "navbar-brand")}
         >
-            <div className={cx("d-flex align-bottom", "brand-1")}>
+            <div className={cx("brand-1")}>
                 <img
                     className={cx("brand-image")}
                     src={brand}

@@ -30,11 +30,13 @@ function SelectQuantity({ className, onChange, value }: SelectQuantity) {
         return number;
     };
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ): void => {
         if (regexNumber(event.target.value) > 30) {
             alert("Quantity limit 30");
         } else {
-            const value = regexNumber(event.target.value);
+            const value: number = regexNumber(event.target.value);
             setInputValue(value);
         }
     };

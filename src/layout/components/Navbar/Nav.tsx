@@ -13,7 +13,7 @@ interface Nav {
 
 function Nav({ className }: Nav) {
     const dispatch = useDispatch();
-    const menuIsOpen = useSelector(selectMenuIsOpen);
+    const menuIsOpen: boolean = useSelector(selectMenuIsOpen);
 
     return (
         <div

@@ -7,29 +7,28 @@ import styles from "./Home.module.scss";
 import Carousel from "../../components/Carousel/Carousel";
 import Card from "../../components/Card/Card";
 import HeaderSection from "../../components/HeaderSection/HeaderSection";
-import * as interfaceGlobal from "../../types/index";
+import * as globalInterface from "../../types/index";
 import * as services from "../../services/index";
 import ModalQuickView from "../../components/ModalQuickView/ModalQuickView";
 import Menu from "../../components/Menu/Menu";
 import Introduce from "../../components/Introduce/Introduce";
 import Contact from "../../components/Contact/Contact";
+import CardSkeleton from "../../components/Skeleton/CardSkeleton/CardSkeleton";
 
 const cx = classNames.bind(styles);
 
 function Home() {
-    const [products, setProducts] = useState<interfaceGlobal.Product[]>([]);
-    const getProduct = async () => {
+    const [products, setProducts] = useState<globalInterface.Product[]>([]);
+    const getProduct = async (): Promise<void> => {
         try {
             const res = await services.getProduct({ limit: 8 });
-            setProducts(res.data);
+            setTimeout(() => {
+                setProducts(res.data);
+            }, 10000);
         } catch (err) {
             console.log(err);
         }
     };
-
-    useEffect(() => {
-        getProduct();
-    }, []);
 
     useEffect(() => {
         Aos.init({
@@ -42,6 +41,10 @@ function Home() {
         });
     }, []);
 
+    useEffect(() => {
+        getProduct();
+    }, []);
+
     return (
         <div className={cx("wrapper")}>
             <Carousel />
@@ -51,22 +54,41 @@ function Home() {
             {/* About */}
             <Introduce />
             {/* Product */}
+
             <div className={cx("container")}>
                 <HeaderSection
                     headerTitle="Hot pizza meal"
                     title="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
                 />
+
                 <div className={cx("row g-0")}>
-                    {products.map((product, index) => (
-                        <div
-                            data-aos="fade-up"
-                            data-aos-easing="ease-in-out"
-                            key={index}
-                            className={cx("col-12 col-xl-3 col-lg-4 col-md-6")}
-                        >
-                            <Card data={product} />
-                        </div>
-                    ))}
+                    {products.length > 0
+                        ? products.map((product, index) => (
+                              <div
+                                  data-aos="fade-up"
+                                  data-aos-easing="ease-in-out"
+                                  key={index}
+                                  className={cx(
+                                      "col-12 col-xl-3 col-lg-4 col-md-6"
+                                  )}
+                              >
+                                  <Card data={product} />
+                              </div>
+                          ))
+                        : Array(8)
+                              .fill(null)
+                              .map((_, index) => (
+                                  <div
+                                      data-aos="fade-up"
+                                      data-aos-easing="ease-in-out"
+                                      key={index}
+                                      className={cx(
+                                          "col-12 col-xl-3 col-lg-4 col-md-6"
+                                      )}
+                                  >
+                                      <CardSkeleton></CardSkeleton>
+                                  </div>
+                              ))}
                 </div>
             </div>
             {/* Menu */}

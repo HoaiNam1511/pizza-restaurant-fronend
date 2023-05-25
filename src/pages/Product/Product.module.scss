@@ -4,7 +4,31 @@
 .background {
     background: url("../../assets/images/bg_4.jpg") no-repeat fixed;
     background-size: cover;
+
+    .menu-banner {
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
     .wrapper {
+        .title-header {
+            text-align: center;
+            color: $text-light-color;
+            margin: 30px 0px 0px;
+            text-transform: uppercase;
+            font-size: 2.6rem;
+
+            @include media-breakpoint-md() {
+                font-size: 2.2rem;
+            }
+
+            @include media-breakpoint-sm() {
+                font-size: 2rem;
+            }
+        }
         .filter {
             padding: 30px 0px 60px;
             ul {
@@ -12,11 +36,15 @@
                 display: flex;
                 justify-content: center;
                 li {
-                    width: 14.28%;
+                    width: 12.5%;
                     text-align: center;
                     display: inline-block;
                     font-size: 1.6rem;
                     margin-bottom: 30px;
+
+                    @include media-breakpoint-xl() {
+                    }
+
                     @include media-breakpoint-lg() {
                         width: 25%;
                     }
@@ -29,12 +57,26 @@
                         font-size: 1.4rem;
                     }
                     span {
-                        margin-left: 10px;
+                        margin: 0;
                         color: $text-light-color;
                         transition: all 0.2s linear;
+                        margin-left: 10px;
+
+                        @include media-breakpoint-xl() {
+                            font-size: 1.5rem;
+                        }
                     }
 
                     img {
+                        width: 42px;
+
+                        @include media-breakpoint-xl() {
+                            width: 32px;
+                        }
+
+                        @include media-breakpoint-lg() {
+                            width: 40px;
+                        }
                         @include media-breakpoint-sm() {
                             width: 8vw;
                         }
@@ -49,6 +91,10 @@
                             animation: shake 0.82s
                                 cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
                             transform: translate3d(0, 0, 0);
+
+                            @include media-breakpoint-lg() {
+                                animation: none;
+                            }
                         }
                     }
                 }
@@ -58,9 +104,27 @@
                     }
                 }
             }
+
+            .loading-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .circular-loading {
+                    color: $primary-color;
+                    @include media-breakpoint-sm() {
+                        width: 32px !important;
+                        height: 32px !important;
+                    }
+                }
+            }
         }
 
         .list {
+            max-width: 1320px;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
         }
     }
 }

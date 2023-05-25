@@ -15,9 +15,7 @@ function ItemProductCheckout({ data }: ItemProductCheckoutProps) {
             <div className={cx("block-1")}>
                 {data?.image && (
                     <img
-                        src={
-                            process.env.REACT_APP_SERVER_URL_IMAGE + data?.image
-                        }
+                        src={data?.image}
                         alt=""
                     />
                 )}

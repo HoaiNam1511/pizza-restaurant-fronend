@@ -136,22 +136,26 @@ export const nutriData: NutriData[] = [
     },
 ];
 
-export const sizeData: globalInterface.Select[] = [
+export const sizeData: globalInterface.SelectSizePrice[] = [
     {
         title: "Small",
         value: "small",
+        price: 0,
     },
     {
         title: "Medium",
         value: "medium",
+        price: 4,
     },
     {
         title: "Large",
         value: "large",
+        price: 8,
     },
     {
         title: "Extra-large",
         value: "extra",
+        price: 12,
     },
 ];
 
