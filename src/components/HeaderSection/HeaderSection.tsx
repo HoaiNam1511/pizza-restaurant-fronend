@@ -15,7 +15,7 @@ function HeaderSection({
 }: HeaderSection) {
     return (
         <div className={cx("row g-0", "menu")}>
-            <div className={cx("col-12 col-md-7")}>
+            <div className={cx("col-12 col-lg-10")}>
                 <div className={cx("wrapper-header-section")}>
                     <h1>{headerTitle}</h1>
                     {line && (

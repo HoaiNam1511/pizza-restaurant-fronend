@@ -280,6 +280,7 @@ nav {
         }
 
         .nav-item {
+            position: relative;
             list-style: none;
             @include media-breakpoint-lg() {
                 margin: 0 5px;

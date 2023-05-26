@@ -3,12 +3,13 @@
 
 .menu-wrapper {
     width: 100%;
+
     .menu {
         position: relative;
         left: 50%;
         transform: translateX(-50%);
         max-width: 1140px;
-        margin: 0 -10px;
+
         .item {
             padding: 0 10px;
         }
@@ -29,7 +30,7 @@
     }
 
     .item-2 {
-        padding: 0 10px;
+        //padding: 0 10px;
         flex: 1;
         .item-2_block-1 {
             position: relative;
@@ -67,6 +68,11 @@
                 color: $text-smoke-color;
                 font-weight: 300;
                 font-size: 1.4rem;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
         }
     }

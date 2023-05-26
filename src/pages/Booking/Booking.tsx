@@ -132,7 +132,7 @@ function Booking() {
         <div className={cx("background")}>
             <div className={cx("container", "wrapper")}>
                 <div className={cx("row g-0")}>
-                    <div className="col-12 col-lg-7">
+                    <div className="col-12 col-lg-8">
                         <img
                             src={image}
                             alt=""
@@ -147,7 +147,12 @@ function Booking() {
                                 <h2>Customer Information</h2>
                             </div>
 
-                            <div className={cx("col-12", "form-group")}>
+                            <div
+                                className={cx(
+                                    "col-12 col-lg-12 col-sm-6",
+                                    "form-group"
+                                )}
+                            >
                                 <input
                                     id={bookingObj.customerName}
                                     name={bookingObj.customerName}
@@ -159,7 +164,12 @@ function Booking() {
                                 <span id="elementWarning"></span>
                             </div>
 
-                            <div className={cx("col-12", "form-group")}>
+                            <div
+                                className={cx(
+                                    "col-12 col-lg-12 col-sm-6",
+                                    "form-group"
+                                )}
+                            >
                                 <input
                                     id={bookingObj.email}
                                     name={bookingObj.email}

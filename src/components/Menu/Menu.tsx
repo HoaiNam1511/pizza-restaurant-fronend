@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import classNames from "classnames/bind";
-import "aos/dist/aos.css";
+import Aos from "aos";
 
+import "aos/dist/aos.css";
 import styles from "./Menu.module.scss";
 import * as productServices from "../../services/productServices";
 import * as interfaceGlobal from "../../types/index";
 import MenuItem from "./Item";
-import Aos from "aos";
 import MenuItemSkeleton from "../Skeleton/MenuItemSkeleton/MenuItemSkeleton";
 const cx = classNames.bind(styles);
 
@@ -15,9 +15,7 @@ function Menu() {
     const getProduct = async (): Promise<void> => {
         try {
             const res = await productServices.getProduct({ limit: 8 });
-            setTimeout(() => {
-                setProducts(res.data);
-            }, 10000);
+            setProducts(res.data);
         } catch (err) {
             console.log(err);
         }
@@ -47,7 +45,6 @@ function Menu() {
                               <MenuItem
                                   key={index}
                                   data={product}
-                                  // className={cx("col-12 col-md-6", "item")}
                               ></MenuItem>
                           </div>
                       ))

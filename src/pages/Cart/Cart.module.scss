@@ -15,6 +15,7 @@ $td-height: 100px;
         display: flex;
         flex-direction: column;
         align-items: center;
+        max-width: 1140px;
     }
 
     .table {
@@ -60,8 +61,10 @@ $td-height: 100px;
                         display: none;
                     }
                 }
+
                 span {
                     padding-left: 10px;
+                    padding-right: 10px;
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;
@@ -105,6 +108,10 @@ $td-height: 100px;
         .total {
             margin-top: 30px;
             width: 260px;
+
+            @include media-breakpoint-sm() {
+                width: 100%;
+            }
         }
         margin-bottom: 30px;
     }

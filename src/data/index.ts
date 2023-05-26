@@ -109,7 +109,7 @@ interface About {
 export const aboutData: About = {
     imageSrc: aboutImage,
     headerTitle: "WELCOME TO PIZZA A RESTAURANT",
-    title: "On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their",
+    title: "Welcome to our pizza restaurant, where every bite is a slice of heaven! We take pride in serving the most delectable and mouthwatering pizzas that will satisfy your cravings. Our skilled chefs handcraft each pizza with love, using only the freshest ingredients and the perfect blend of flavors. From thin crust to deep dish, our pizzas are baked to perfection, ensuring a crispy crust and a delightful balance of toppings. Indulge in our signature creations or build your own masterpiece, customized to your exact preferences. Whether you're dining in, taking out, or enjoying our pizza at home, we guarantee a taste sensation that will leave you craving more. Join us at our pizza restaurant and let your taste buds embark on an unforgettable journey.",
 };
 
 interface NutriData {

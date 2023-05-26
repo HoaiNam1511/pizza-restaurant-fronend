@@ -45,7 +45,7 @@ function Cart() {
     return (
         <div className={cx("background")}>
             {carts.length > 0 ? (
-                <div className={cx("container", "wrapper")}>
+                <div className={cx("container-fluid g-0", "wrapper")}>
                     <table className={cx("table")}>
                         <thead>
                             <tr className={cx("row g-0")}>
@@ -53,7 +53,7 @@ function Cart() {
                                 <th className={cx("col-3")}>Quantity</th>
                                 <th className={cx("col-2")}>Size</th>
                                 <th className={cx("col-2")}>Price</th>
-                                <th className={cx("col-1")}>Remove</th>
+                                <th className={cx("col-1")}></th>
                             </tr>
                         </thead>
                         <tbody>

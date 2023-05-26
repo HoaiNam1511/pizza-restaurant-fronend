@@ -16,7 +16,7 @@
         }
 
         .content {
-            padding: 5%;
+            padding: 5% 5% 2% 5%;
 
             @include media-breakpoint-md() {
                 padding: 30px 15px;
@@ -27,7 +27,7 @@
                 color: $text-light-color;
                 font-size: 3rem;
                 text-transform: uppercase;
-                margin-bottom: 24px;
+                margin-bottom: 20px;
                 font-family: "Josefin Sans", Arial, sans-serif;
                 span {
                     color: $primary-color;
@@ -43,6 +43,8 @@
                 font-size: 1.6rem;
                 font-weight: 300;
                 font-family: "Poppins", Arial, sans-serif;
+                word-spacing: 0.1rem;
+                line-height: 1.6;
             }
         }
     }

@@ -29,6 +29,8 @@ $margin-item: 22px;
 }
 
 .wrapper {
+    max-width: 1200px;
+    padding: 0 20px !important;
     .left {
         display: flex;
         justify-content: center;
@@ -128,6 +130,7 @@ $margin-item: 22px;
             position: relative;
             list-style: none;
             margin-bottom: 0px;
+            display: flex;
             li {
                 @include title-header;
                 position: relative;
@@ -136,11 +139,19 @@ $margin-item: 22px;
                 padding: 5px 30px;
                 margin: 0;
                 font-size: 1.7rem;
+
                 &:nth-child(1) {
                     padding-left: 0;
                 }
+
                 &:hover {
                     cursor: pointer;
+                }
+
+                @include media-breakpoint-sm() {
+                    padding-left: 20px;
+                    padding-right: 10px;
+                    flex: 1 1 50%;
                 }
             }
 
@@ -178,7 +189,8 @@ $margin-item: 22px;
             padding: 15px 0px;
             @include title;
 
-            &-active {
+            .item {
+                padding: 0px 10px;
             }
         }
     }

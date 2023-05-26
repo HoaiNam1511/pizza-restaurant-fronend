@@ -4,7 +4,7 @@
 .card-wrapper {
     width: 100%;
     position: relative;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
 
     &:hover {
         @for $i from 1 through 2 {
@@ -106,10 +106,16 @@
     .card-name {
         color: $primary-color;
         margin: 25px 0 10px;
+        @include media-breakpoint-sm() {
+            font-size: 5.5vw;
+        }
     }
     .card-price {
         color: $text-price-color;
         margin: 10px 0 17px;
+        @include media-breakpoint-sm() {
+            font-size: 4.8vw;
+        }
     }
 
     .buttons {

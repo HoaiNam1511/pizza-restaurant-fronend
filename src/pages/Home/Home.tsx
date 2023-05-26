@@ -22,9 +22,7 @@ function Home() {
     const getProduct = async (): Promise<void> => {
         try {
             const res = await services.getProduct({ limit: 8 });
-            setTimeout(() => {
-                setProducts(res.data);
-            }, 10000);
+            setProducts(res.data);
         } catch (err) {
             console.log(err);
         }
@@ -58,10 +56,10 @@ function Home() {
             <div className={cx("container")}>
                 <HeaderSection
                     headerTitle="Hot pizza meal"
-                    title="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+                    title=" Savor the crisp crust, gooey cheese, and tantalizing toppings, making every bite an unforgettable experience. It's the ultimate pizza indulgence you don't want to miss!"
                 />
 
-                <div className={cx("row g-0")}>
+                <div className={cx("row g-0", "product-container")}>
                     {products.length > 0
                         ? products.map((product, index) => (
                               <div
@@ -69,7 +67,7 @@ function Home() {
                                   data-aos-easing="ease-in-out"
                                   key={index}
                                   className={cx(
-                                      "col-12 col-xl-3 col-lg-4 col-md-6"
+                                      "col-12 col-xl-3 col-lg-4 col-sm-6"
                                   )}
                               >
                                   <Card data={product} />
@@ -95,7 +93,7 @@ function Home() {
             <div className={cx("container")}>
                 <HeaderSection
                     headerTitle="Our menu pricing"
-                    title="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+                    title="Our menu boasts a delectable selection of artisanal pizzas. Experience the perfect harmony of quality ingredients, savory sauces, and melty cheese. Join us and indulge in pizza perfection!"
                     line
                 />
                 <Menu />

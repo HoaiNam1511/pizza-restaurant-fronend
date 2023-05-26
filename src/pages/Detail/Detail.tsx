@@ -125,7 +125,7 @@ function Detail() {
 
     return (
         <div className={cx("background")}>
-            <div className={cx("container g-0", "wrapper")}>
+            <div className={cx("container-fluid g-0", "wrapper")}>
                 <div className={cx("row g-0")}>
                     {/* left */}
                     <div className={cx("col-12 col-lg-6", "left")}>
@@ -137,7 +137,7 @@ function Detail() {
                         )}
                     </div>
                     {/* right */}
-                    <div className={cx("col-12 col-lg-4", "right")}>
+                    <div className={cx("col-12 col-lg-5 col-xl-4", "right")}>
                         {/* detail */}
                         <h1 className={cx("name")}>{product?.name}</h1>
                         <h2 className={cx("price")}>
@@ -204,7 +204,7 @@ function Detail() {
                 </div>
                 {/* more information */}
                 <div className={cx("row g-0", "information")}>
-                    <ul className={cx("col-10")}>
+                    <ul className={cx("col-12 col-lg-11 col-xl-10")}>
                         {staticData.TabData.map((tab, index) => (
                             <li
                                 key={index}
@@ -219,7 +219,7 @@ function Detail() {
                     </ul>
 
                     <div
-                        className={cx("col-10", "content-wrapper", {
+                        className={cx("col-12 col-lg-10", "content-wrapper", {
                             active: currentTab === 0,
                         })}
                     >
@@ -230,7 +230,7 @@ function Detail() {
                         </div>
                     </div>
                     <div
-                        className={cx("col-10", "content-wrapper", {
+                        className={cx("col-12 col-lg-10", "content-wrapper", {
                             active: currentTab === 1,
                         })}
                     >
@@ -238,7 +238,10 @@ function Detail() {
                             {staticData.AdditionalInformationData.map(
                                 (info, index) => (
                                     <div
-                                        className={cx("col-3")}
+                                        className={cx(
+                                            "col-12 col-sm-6 col-lg-4 col-xl-3",
+                                            "item"
+                                        )}
                                         key={index}
                                     >
                                         <ItemLabel
