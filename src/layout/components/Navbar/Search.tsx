@@ -34,6 +34,15 @@ function Search({ className }: Search) {
         setMenuIsOpenState(value);
     };
 
+    const onSearchClick = () => {
+        dispatch(setSearchOpen());
+        dispatch(setMenuClose());
+    };
+
+    const onDeliveryClick = () => {
+        dispatch(setMenuClose());
+    };
+
     useEffect(() => {
         setMenuIsOpenState(selectMenuOpen);
     }, [selectMenuOpen]);
@@ -64,13 +73,16 @@ function Search({ className }: Search) {
                 <ul className={cx("search-mobile_container")}>
                     <li
                         className={cx("nav-item")}
-                        onClick={() => dispatch(setSearchOpen())}
+                        onClick={onSearchClick}
                     >
                         <SearchIcon className={cx("nav-icon", "icon-mb")} />
                     </li>
 
                     <li className={cx("nav-item")}>
-                        <NavLink to={navData[navData.length - 1].to}>
+                        <NavLink
+                            to={navData[navData.length - 1].to}
+                            onClick={onDeliveryClick}
+                        >
                             <DeliveryIcon
                                 className={cx("nav-icon", "icon-mb")}
                             />

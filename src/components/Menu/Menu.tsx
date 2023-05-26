@@ -15,6 +15,7 @@ function Menu() {
     const getProduct = async (): Promise<void> => {
         try {
             const res = await productServices.getProduct({ limit: 8 });
+
             setProducts(res.data);
         } catch (err) {
             console.log(err);

@@ -13,7 +13,7 @@ function CardSkeleton({ className }: CardSkeletonProps) {
         <div className={cx("card-wrapper")}>
             <div className={cx("card-image")}>
                 <Skeleton
-                    sx={{ bgcolor: "grey.900" }}
+                    sx={{ bgcolor: "grey.800" }}
                     variant="circular"
                     style={{ width: "100%", height: "100%" }}
                 >
@@ -25,7 +25,7 @@ function CardSkeleton({ className }: CardSkeletonProps) {
             </div>
             <h2 className={cx("card-name")}>
                 <Skeleton
-                    sx={{ bgcolor: "grey.900" }}
+                    sx={{ bgcolor: "grey.800" }}
                     variant="rectangular"
                     style={{
                         width: "100%",
@@ -38,7 +38,7 @@ function CardSkeleton({ className }: CardSkeletonProps) {
             </h2>
             <h2 className={cx("card-price")}>
                 <Skeleton
-                    sx={{ bgcolor: "grey.900" }}
+                    sx={{ bgcolor: "grey.800" }}
                     variant="rectangular"
                     style={{
                         width: "100%",

@@ -13,14 +13,14 @@ function MenuItemSkeleton({ className }: MenuItemSkeletonProps) {
             <div className={cx("item-wrapper")}>
                 <div className={cx("item-1")}>
                     <Skeleton
-                        sx={{ bgcolor: "grey.900" }}
+                        sx={{ bgcolor: "grey.800" }}
                         variant="circular"
                         style={{ width: "100%", height: "100%" }}
                     />
                 </div>
                 <div className={cx("item-2")}>
                     <Skeleton
-                        sx={{ bgcolor: "grey.900" }}
+                        sx={{ bgcolor: "grey.800" }}
                         variant="rectangular"
                         style={{
                             width: "100%",
@@ -31,7 +31,7 @@ function MenuItemSkeleton({ className }: MenuItemSkeletonProps) {
                     />
                     <div className={cx("item-2_block-2")}>
                         <Skeleton
-                            sx={{ bgcolor: "grey.900" }}
+                            sx={{ bgcolor: "grey.800" }}
                             variant="rectangular"
                             style={{ width: "100%", borderRadius: "4px" }}
                             height={42}
