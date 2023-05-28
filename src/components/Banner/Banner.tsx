@@ -10,7 +10,7 @@ interface BannerProps {
 
 function Banner({ title = "This is banner" }: BannerProps) {
     return (
-        <div className={cx("container-fluid", "banner-wrapper")}>
+        <div className={cx("container-fluid g-0", "banner-wrapper")}>
             <div className={cx("banner")}>
                 <div className={cx("overlay")}></div>
                 <div className={cx("content")}>

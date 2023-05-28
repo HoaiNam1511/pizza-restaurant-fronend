@@ -130,7 +130,7 @@ function Booking() {
 
     return (
         <div className={cx("background")}>
-            <div className={cx("container", "wrapper")}>
+            <div className={cx("container g-0", "wrapper")}>
                 <div className={cx("row g-0")}>
                     <div className="col-12 col-lg-8">
                         <img

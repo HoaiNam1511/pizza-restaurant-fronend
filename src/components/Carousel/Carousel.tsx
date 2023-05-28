@@ -1,16 +1,27 @@
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import classNames from "classnames/bind";
 
 import styles from "./Carousel.module.scss";
 import image1 from "../../assets/images/bg_1.png";
 import image2 from "../../assets/images/bg_2.png";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
+import config from "../../config";
 
 const cx = classNames.bind(styles);
 function Carousel() {
+    const navigate = useNavigate();
     const refTimeSlide = useRef<NodeJS.Timeout>();
     const dotsArr: number[] = [0, 1, 2];
     const [active, setActive] = useState<number>(0);
+
+    const onMenuClick = () => {
+        navigate(config.routes.product);
+    };
+
+    const onBookingClick = () => {
+        navigate(config.routes.booking);
+    };
 
     useEffect(() => {
         refTimeSlide.current = setInterval(() => {
@@ -70,6 +81,7 @@ function Carousel() {
                                         >
                                             <PrimaryButton
                                                 className={cx("carousel-btn")}
+                                                onClick={onMenuClick}
                                             >
                                                 View Menu
                                             </PrimaryButton>
@@ -77,6 +89,7 @@ function Carousel() {
                                                 className={cx("carousel-btn")}
                                                 outline
                                                 color="white"
+                                                onClick={onBookingClick}
                                             >
                                                 Booking
                                             </PrimaryButton>

@@ -74,8 +74,8 @@ function Order() {
                 setPopupNotification({
                     action: "success",
                     isOpen: true,
-                    mainTitle: "Booking success",
-                    title: "Thank you for booking, please check your email and confirm",
+                    mainTitle: "Order success",
+                    title: "Please hold the line for a moment, as I have a delivery person on the other line. Thank you for your patience.",
                 })
             );
         } catch (err) {

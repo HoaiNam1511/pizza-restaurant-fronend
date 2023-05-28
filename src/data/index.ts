@@ -230,30 +230,30 @@ export const ChefData: globalInterface.Chef[] = [
     {
         image: avatar1,
         name: "TOM SMITH",
-        position: "Hair Specialist",
+        position: "Executive Chef",
         description:
-            "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+            "Tom Smith is a true maestro of Neapolitan pizza. With a lineage of pizza makers in his family, he carries on the rich tradition of crafting authentic Neapolitan pizza",
     },
     {
         image: avatar2,
         name: "MARK WILSON",
         position: "Hair Specialist",
         description:
-            "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+            "With a background that blends Italian traditions and global influences, she pushes the boundaries of flavor, presentation and imaginative combinations",
     },
     {
         image: avatar3,
         name: "PATRICK JACOBSON",
-        position: "Hair Specialist",
+        position: "Sous Chef",
         description:
-            "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+            "With a focus on using organic and locally sourced ingredients, he creates pizzas that showcase the freshness, attractive and quality of the produce",
     },
     {
         image: avatar4,
         name: "IVAN DORCHSNER",
-        position: "Beard Specialist",
+        position: "Executive Chef",
         description:
-            "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+            "Ivan Dorchsner are used by their large, foldable slices, crispy crusts, and generous toppings. Her commitment to using high-quality ingredients and perfecting the balance",
     },
 ];
 

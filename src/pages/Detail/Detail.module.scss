@@ -22,7 +22,7 @@ $margin-item: 22px;
     background: url("../../assets/images/bg_4.jpg") no-repeat fixed;
     background-size: cover;
 
-    @include media-breakpoint-md() {
+    @include media-breakpoint-xl() {
         padding-left: 10px;
         padding-right: 10px;
     }
@@ -30,7 +30,7 @@ $margin-item: 22px;
 
 .wrapper {
     max-width: 1200px;
-    padding: 0 20px !important;
+    // padding: 0 20px !important;
     .left {
         display: flex;
         justify-content: center;
@@ -116,6 +116,7 @@ $margin-item: 22px;
     }
 
     .information {
+        padding: 30px 0px;
         .information-header {
             position: relative;
             font-size: 1.8rem;
@@ -125,7 +126,6 @@ $margin-item: 22px;
             }
         }
 
-        padding: 30px 0px;
         ul {
             position: relative;
             list-style: none;

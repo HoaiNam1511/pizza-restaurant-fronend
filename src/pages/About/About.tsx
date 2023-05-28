@@ -19,7 +19,7 @@ function About() {
                 <Introduce />
                 <HeaderSection
                     headerTitle="Our chef"
-                    title="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+                    title="Where Culinary Dreams Come to Life"
                     line
                 />
                 <div className={cx("row g-0", "list")}>

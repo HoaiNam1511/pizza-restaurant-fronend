@@ -15,7 +15,7 @@ interface Footer {
 function Footer({ className }: Footer) {
     return (
         <footer className={cx(className)}>
-            <div className={cx("container")}>
+            <div className={cx("container g-0")}>
                 <div className={cx("row g-0", "footer-wrapper")}>
                     <div
                         className={cx(
